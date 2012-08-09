@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/dkhroad/dotfiles/dotvim/bundle/colors_cobalt/colors'
-let g:netrw_dirhist_2='/usr/local/mysql-5.5.23-linux2.6-x86_64/data/mysql'
-let g:netrw_dirhist_3='/home/dkhroad/dotfiles/dotvim/bundle/msanders-snipmate.vim/.git'
