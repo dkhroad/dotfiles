@@ -29,7 +29,8 @@ namespace :update do
     :vim_markdown => "git://github.com/tpope/vim-markdown.git",
     :nerdtree => "git://github.com/scrooloose/nerdtree.git" ,
     :vim_ctrlp => "git://github.com/kien/ctrlp.vim.git" ,
-    :vim_ruby_debugger => "git://github.com/astashov/vim-ruby-debugger.git"
+    :vim_easymotion => "git://github.com/Lokaltog/vim-easymotion.git",
+	:lusty => "git://github.com/sjbach/lusty.git",
 
     #syntax definitions
 
@@ -54,6 +55,7 @@ namespace :update do
       rm_rf target_path
 
       case location.match( /^(.*?):/ )[1]
+      when 'git'
         sh "git clone #{location} #{target_path} > /dev/null"
         rm_rf target_path + '.git'
       when 'http'
