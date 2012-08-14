@@ -30,7 +30,7 @@ namespace :update do
     :nerdtree => "git://github.com/scrooloose/nerdtree.git" ,
     :vim_ctrlp => "git://github.com/kien/ctrlp.vim.git" ,
     :vim_easymotion => "git://github.com/Lokaltog/vim-easymotion.git",
-	:lusty => "git://github.com/sjbach/lusty.git",
+  	:lusty => "git://github.com/sjbach/lusty.git",
 
     #syntax definitions
 
