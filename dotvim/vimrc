@@ -113,9 +113,14 @@ endfunction
 map <leader>r :call RSpecCurrent() <CR>
 command! RSpecCurrent call RSpecCurrent()
 
-let g:LustyExplorerSuppressRubyWarning = 1
+"Markdown to HTML
+nmap <leader>md :%!~/bin/Markdown.pl --html4tags <cr>
 
 "gem-tags"
 autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
       \ pathogen#split(&tags) +
       \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
+
+let g:LustyExplorerSuppressRubyWarning = 1
+
+let g:dbgPavimBreakAtEntry = 0
