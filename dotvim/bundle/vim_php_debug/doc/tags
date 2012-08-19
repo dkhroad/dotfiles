@@ -1,4 +1,5 @@
-dbgpavim	dbgpavim.txt	/*DBGPavim*
-dbgpavim-commands	dbgpavim.txt	/*commands*
-dbgpavim-status	dbgpavim.txt	/*Status*
-dbgpavim-usage	dbgpavim.txt	/*Usage*
+DBGPavim	dbgpavim.txt	/*DBGPavim*
+Status	dbgpavim.txt	/*Status*
+Usage	dbgpavim.txt	/*Usage*
+commands	dbgpavim.txt	/*commands*
+enhancements	dbgpavim.txt	/*enhancements*

@@ -4,7 +4,6 @@
 set background=dark
 set nocompatible                  " Must come first because it changes other options.
 
-
 silent! call pathogen#runtime_append_all_bundles()
 
 syntax enable                     " Turn on syntax highlighting.
@@ -117,11 +116,17 @@ command! RSpecCurrent call RSpecCurrent()
 nmap <leader>md :%!~/bin/Markdown.pl --html4tags <cr>
 
 
+"suppress lust warnings
 let g:LustyExplorerSuppressRubyWarning = 1
 
+"Don't break by default in php debugger
 let g:dbgPavimBreakAtEntry = 0
 
 "search all gems in curren RVM gemset
 autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
       \ pathogen#split(&tags) +
       \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
+"Notes plugin 
+:let g:notes_suffix = '.txt'
+:let g:notes_directory = '~/Notes'
+:let g:notes_title_sync = 'rename_file'

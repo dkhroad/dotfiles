@@ -1,0 +1,2 @@
+vim	vim_buffer_redirect
+myfootag	First Note
