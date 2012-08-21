@@ -126,7 +126,22 @@ let g:dbgPavimBreakAtEntry = 0
 autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
       \ pathogen#split(&tags) +
       \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
+
 "Notes plugin 
 :let g:notes_suffix = '.txt'
 :let g:notes_directory = '~/Notes'
 :let g:notes_title_sync = 'rename_file'
+
+"Ctrl-P plugin 
+let g:ctrlp_clear_cache_on_exit = 0 "enable cross-session caching
+let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
+                          \ 'undo', 'line', 'changes',  'bookmarkdir']
+map <leader>pm :CtrlPMixed<CR>
+map <leader>pr :CtrlPRoot
+map <leader>pb :CtrlPBuffer<CR>
+map <leader>pr :CtrlPMRU<CR>
+map <leader>pp :CtrlP
+map <leader>pccc :CtrlPClearCache<CR>
+map <leader>pcca :CtrlPClearCache<CR>
+
