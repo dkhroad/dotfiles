@@ -15,5 +15,6 @@ set background=dark              " Background.
 set lines=25 columns=100          " Window dimensions.
 
 set guioptions-=r                 " Don't show right scrollbar
+set nomousehide                   "don't hide the mouse -- very annoying otherwise
 
 
