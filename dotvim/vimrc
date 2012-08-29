@@ -134,7 +134,7 @@ autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
 
 "Ctrl-P plugin 
 let g:ctrlp_clear_cache_on_exit = 0 "enable cross-session caching
-let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
                           \ 'undo', 'line', 'changes',  'bookmarkdir']
 map <leader>pm :CtrlPMixed<CR>
