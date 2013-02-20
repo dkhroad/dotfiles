@@ -1,3 +1,5 @@
 alias gl='git l'
 alias gs='git status --short'
 alias gco='git co'
+alias gr='git remote -v'
+alias grepos='ssh git@gito-rover.cv.hp.com info'

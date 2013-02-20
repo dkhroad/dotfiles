@@ -15,7 +15,7 @@
   untracked = red
 [user]
 	name = Devinder Khroad
-	email = dkhroad@gmail.com
+	email = devinder.khroad@hp.com
 	initials = dk
 [alias]
 	st = status
@@ -23,9 +23,11 @@
 	co = checkout
 	ci = commit
 	br = branch
-	sta = stash
+  sta = stash
+  pl = pull --ff-only
   llog = log --date=local
-  l = log --pretty=oneline --abbrev-commit --graph --decorate
+    l = log --pretty=oneline --abbrev-commit --graph --decorate
+   # l = log --pretty=format:'%h %s (%an)' --abbrev-commit --graph --decorate
   # Other useful aliases:
   unstage = reset HEAD
   staged = diff --cached
@@ -36,6 +38,8 @@
 	autosetupmerge = true
 [core]
   excludesfile = /Users/dkhroad/.gitignore
+	gitproxy = gitproxy
+	autocrlf = input
 [push]
   #only push branches that have been set up to tracka remote branch
   default = current

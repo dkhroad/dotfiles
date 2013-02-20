@@ -4,6 +4,7 @@ if [ $OS = 'Darwin' ]; then
   alias vimc="mvim --servername FOOBAR --remote"
   alias vi="mvim -v"
 else
-  alias  vims="gvim --servername FOOBAR"
-  alias vimc="gvim --servername FOOBAR --remote"
+  alias  vims="vim --servername FOOBAR"
+  alias vimc="vim --servername FOOBAR --remote"
+  export TERM="xterm-256color"
 fi

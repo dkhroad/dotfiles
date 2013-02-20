@@ -43,8 +43,8 @@ set noswapfile                    " No swap files please
 "set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
 
 " UNCOMMENT TO USE
-set tabstop=2                    " Global tab width.
-set shiftwidth=2                 " And again, related.
+set tabstop=4                    " Global tab width.
+set shiftwidth=4                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
@@ -89,7 +89,7 @@ map <C-l> <C-w>l
 cmap w!! w !sudo tee % > /dev/null
 
 " Automatic fold settings for specific files. Uncomment to use.
-" autocmd FileType ruby setlocal foldmethod=syntax
+autocmd FileType ruby setlocal foldmethod=syntax foldlevel=20 shiftwidth=4 tabstop=4
 " autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
 
 " For the MakeGreen plugin and Ruby RSpec. Uncomment to use.
@@ -134,7 +134,9 @@ autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
 
 "Ctrl-P plugin 
 let g:ctrlp_clear_cache_on_exit = 0 "enable cross-session caching
-let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode ='rc'
+
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
                           \ 'undo', 'line', 'changes',  'bookmarkdir']
 map <leader>pm :CtrlPMixed<CR>
@@ -144,6 +146,7 @@ map <leader>pr :CtrlPMRU<CR>
 map <leader>pp :CtrlP
 map <leader>pccc :CtrlPClearCache<CR>
 map <leader>pcca :CtrlPClearCache<CR>
+
 
 let g:dbgPavimBreakAtEntry = 0
 
