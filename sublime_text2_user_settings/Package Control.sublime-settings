@@ -1,0 +1,20 @@
+{
+	"auto_upgrade_last_run": null,
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"BeautifyRuby",
+		"Git",
+		"GotoOpenFile",
+		"Http Requester",
+		"LiveReload",
+		"Markdown Preview",
+		"Origami",
+		"Package Control",
+		"PlainTasks",
+		"RubyTest",
+		"Sass",
+		"Shell Turtlestein",
+		"SideBarEnhancements"
+	]
+}

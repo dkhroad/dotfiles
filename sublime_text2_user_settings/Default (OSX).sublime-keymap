@@ -1,0 +1,24 @@
+[
+  { "keys": ["ctrl+shift+."], "command": "erb", "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "text.html.ruby, text.haml, source.yaml, source.css, source.scss, source.js, source.coffee" }
+    ]
+  },
+  { "keys": ["escape"], "command": "alternative_autocomplete", "context":
+    [
+      { "key": "num_selections", "operator": "equal", "operand": 1 },
+      { "key": "overlay_visible", "operator": "equal", "operand": false },
+      { "key": "panel_visible", "operator": "equal", "operand": false }
+    ]
+  },
+  { "keys": ["shift+escape"], "command": "alternative_autocomplete", "args": {"cycle": "previous"}, "context":
+    [
+      { "key": "num_selections", "operator": "equal", "operand": 1 },
+      { "key": "overlay_visible", "operator": "equal", "operand": false },
+      { "key": "panel_visible", "operator": "equal", "operand": false }
+    ]
+  },
+  { "keys": ["super+="], "command": "reindent", "args" : {"single_line": false} },
+  { "keys": ["super+k"], "command": "toggle_side_bar" }
+
+]

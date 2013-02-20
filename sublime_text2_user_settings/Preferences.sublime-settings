@@ -1,0 +1,17 @@
+{
+	"auto_indent": true,
+	"color_scheme": "Packages/User/Railscasts.tmTheme",
+	"font_size": 8.0,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_to_bracket": true,
+	"rulers":
+	[
+		80
+	],
+	"save_on_focus_lost": true,
+	"smart_indent": false,
+	"translate_tabs_to_spaces": true
+}
