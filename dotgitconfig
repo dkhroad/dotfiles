@@ -38,8 +38,10 @@
 	autosetupmerge = true
 [core]
   excludesfile = /Users/dkhroad/.gitignore
-	gitproxy = gitproxy
+  #gitproxy = gitproxy
 	autocrlf = input
+	editor = vi
+	pager = less -FRSX
 [push]
   #only push branches that have been set up to tracka remote branch
   default = current
@@ -47,3 +49,12 @@
   submodule=1
 [help]
   autocorrect=1
+[mergetool "sublime"]
+	cmd = subl -w $MERGED
+	trustExitCode = false
+[merge]
+	tool = sublime
+[diff]
+    #external = /home/dkhroad/bin/diff.py
+[diff]
+	tool = meld

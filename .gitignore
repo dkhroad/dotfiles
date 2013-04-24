@@ -3,3 +3,6 @@
 *.png
 .DS_Store
 .netrwhist
+*.pyc
+sublime_text2_user_settings/Package Control.last-run
+sublime_text2_user_settings/RubyTest.last-run
