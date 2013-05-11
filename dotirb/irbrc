@@ -1,15 +1,20 @@
 #!/usr/bin/env ruby
 require 'irb/completion'
 require 'irb/ext/save-history'
-require 'interactive_editor'
-require 'console_update'
+#require 'interactive_editor'
+#require 'console_update'
 require 'awesome_print'
 
-ConsoleUpdate.editor='vim'
+#ConsoleUpdate.editor='vim'
 
 IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:SAVE_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
+IRB.conf[:HISTORY_FILE] = if defined?(Bundler) 
+                              Bundler.tmp.parent.join('.irb_history.rb')
+                          else
+                              "#{ENV['HOME']}/.irb_history"
+                          end
+IRB.conf[:AUTO_INDENT] = true 
 
 # ActiveRecord::Base.logger.level = 1 if defined? ActiveRecord::Base
 
@@ -39,3 +44,10 @@ if defined? Rails
   rescue LoadError
   end
 end
+
+begin
+    require 'pry'
+    Pry.start 
+rescue LoadError
+end
+
