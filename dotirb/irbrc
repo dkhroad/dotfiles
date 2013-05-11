@@ -45,9 +45,9 @@ if defined? Rails
   end
 end
 
-begin
+(begin
     require 'pry'
     Pry.start 
 rescue LoadError
-end
+end; exit)
 
