@@ -7,7 +7,7 @@ else
   set guifont=Monospace\ 9            " Font family and font size.
 endif
 
-colorscheme cobalt
+colorscheme solarized
 set antialias                     " MacVim: smooth fonts.
 set encoding=utf-8                " Use UTF-8 everywhere.
 "set guioptions-=T                 " Hide toolbar.
