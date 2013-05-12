@@ -33,6 +33,7 @@ ZSH_THEME="dkhroad"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+
 plugins=(git sublime)
 
 source $ZSH/oh-my-zsh.sh
@@ -43,10 +44,10 @@ source $HOME/.bash_profile_includes/cdr.sh
 source $HOME/.bash_profile_includes/rvm.sh
 source $HOME/.bash_profile_includes/vagrant.sh
 source $HOME/.bash_profile_includes/vim.sh
+source $HOME/.bash_profile_includes/proxy.sh
 
 PATH=$HOME/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export http_proxy=http://proxy.vcd.hp.com:8080/
-export no_proxy=localhost,127.0.0.1
 export SC_DB_HOST=127.0.0.1
 
 alias gs='git status'
+bindkey -v
