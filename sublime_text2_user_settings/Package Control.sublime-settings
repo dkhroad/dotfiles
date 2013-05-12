@@ -4,6 +4,7 @@
 	[
 		"AdvancedNewFile",
 		"BeautifyRuby",
+		"EasyMotion",
 		"Gem Browser",
 		"Git",
 		"GotoOpenFile",
@@ -16,6 +17,8 @@
 		"RubyTest",
 		"Sass",
 		"Shell Turtlestein",
-		"SideBarEnhancements"
+		"SideBarEnhancements",
+		"Sublimerge",
+		"Traverse"
 	]
 }

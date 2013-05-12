@@ -19,6 +19,6 @@
     ]
   },
   { "keys": ["super+="], "command": "reindent", "args" : {"single_line": false} },
-  { "keys": ["super+k"], "command": "toggle_side_bar" }
+  { "keys": ["super+g","super+b"], "command": "list_gems" }
 
 ]
