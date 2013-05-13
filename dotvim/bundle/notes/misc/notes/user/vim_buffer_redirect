@@ -1,8 +1,0 @@
-vim_buffer_redirect
-@vim
-:redir >> ~/mymaps.txt
-:map
-:redir END
-
- • Note taking syntax
- • Note taking commands

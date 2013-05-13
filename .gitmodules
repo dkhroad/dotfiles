@@ -1,0 +1,78 @@
+[submodule "dotvim/bundle/nerdtree"]
+	path = dotvim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "dotvim/bundle/vim_fugitive"]
+	path = dotvim/bundle/vim_fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "dotvim/bundle/ack"]
+	path = dotvim/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "dotvim/bundle/endwise"]
+	path = dotvim/bundle/endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "dotvim/bundle/vim_rails"]
+	path = dotvim/bundle/vim_rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "dotvim/bundle/vim_tcomment"]
+	path = dotvim/bundle/vim_tcomment
+	url = git://github.com/tomtom/tcomment_vim.git
+[submodule "dotvim/bundle/vim_makegreen"]
+	path = dotvim/bundle/vim_makegreen
+	url = git://github.com/reinh/vim-makegreen.git
+[submodule "dotvim/bundle/vim_bundler"]
+	path = dotvim/bundle/vim_bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "dotvim/bundle/vim_rake"]
+	path = dotvim/bundle/vim_rake
+	url = git://github.com/tpope/vim-rake.git
+[submodule "dotvim/bundle/vim_unimpaired"]
+	path = dotvim/bundle/vim_unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "dotvim/bundle/lusty"]
+	path = dotvim/bundle/lusty
+	url = git://github.com/sjbach/lusty.git
+[submodule "dotvim/bundle/vim_easymotion"]
+	path = dotvim/bundle/vim_easymotion
+	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule "dotvim/bundle/vim_markdown"]
+	path = dotvim/bundle/vim_markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "dotvim/bundle/vim_surround"]
+	path = dotvim/bundle/vim_surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "dotvim/bundle/vim_git"]
+	path = dotvim/bundle/vim_git
+	url = git://github.com/tpope/vim-git.git
+[submodule "dotvim/bundle/vim_ragtag"]
+	path = dotvim/bundle/vim_ragtag
+	url = git://github.com/tpope/vim-ragtag.git
+[submodule "dotvim/bundle/vim_rooter"]
+	path = dotvim/bundle/vim_rooter
+	url = git://github.com/airblade/vim-rooter.git
+[submodule "dotvim/bundle/vim_powerline"]
+	path = dotvim/bundle/vim_powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule "dotvim/bundle/vim_ctrlp"]
+	path = dotvim/bundle/vim_ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
+[submodule "dotvim/bundle/vim-powerline"]
+	path = dotvim/bundle/vim-powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule "dotvim/bundle/vim_bufexplorer"]
+	path = dotvim/bundle/vim_bufexplorer
+	url = git://github.com/thisivan/vim-bufexplorer.git
+[submodule "dotvim/bundle/vim_notes"]
+	path = dotvim/bundle/vim_notes
+	url = git://github.com/xolox/vim-notes.git
+[submodule "dotvim/bundle/vim_snipmate"]
+	path = dotvim/bundle/vim_snipmate
+	url = git://github.com/garbas/vim-snipmate.git
+[submodule "dotvim/bundle/tlb_vim"]
+	path = dotvim/bundle/tlb_vim
+	url = git://github.com/tomtom/tlib_vim.git
+[submodule "dotvim/bundle/vim-snippets"]
+	path = dotvim/bundle/vim-snippets
+	url = git://github.com/honza/vim-snippets.git
+[submodule "dotvim/bundle/vim-addon-mw-utils"]
+	path = dotvim/bundle/vim-addon-mw-utils
+	url = git://github.com/MarcWeber/vim-addon-mw-utils.git
