@@ -34,9 +34,6 @@
 [submodule "dotvim/bundle/vim_easymotion"]
 	path = dotvim/bundle/vim_easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
-[submodule "dotvim/bundle/vim_markdown"]
-	path = dotvim/bundle/vim_markdown
-	url = git://github.com/tpope/vim-markdown.git
 [submodule "dotvim/bundle/vim_surround"]
 	path = dotvim/bundle/vim_surround
 	url = git://github.com/tpope/vim-surround.git
