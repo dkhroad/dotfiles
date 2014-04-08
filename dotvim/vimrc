@@ -7,10 +7,10 @@ set nocompatible                  " Must come first because it changes other opt
 
 let g:pathogen_disabled = [] 
 " call add(g:pathogen_disabled, 'vim_turbux')
-call add(g:pathogen_disabled, 'tslime.vim')
+" call add(g:pathogen_disabled, 'tslime.vim')
 call add(g:pathogen_disabled, 'vimux-ruby-test')
 " call add(g:pathogen_disabled, 'vimux')
-call add(g:pathogen_disabled, 'vim-dispatch')
+" call add(g:pathogen_disabled, 'vim-dispatch')
 call pathogen#infect()
 syntax on
 " silent! call pathogen#runtime_append_all_bundles()
@@ -21,7 +21,9 @@ syntax on
 filetype plugin indent on         " Turn on file type detection.
 
 runtime macros/matchit.vim        " Load the matchit plugin.
-set clipboard+=unnamed
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 set t_Co=256                      " 256 color support
 
 set showcmd                       " Display incomplete commands.
@@ -176,12 +178,18 @@ let g:dbgPavimBreakAtEntry = 0
 " map <Leader>l :call RunLastSpec()<CR>
 " let g:rspec_command = "!bin/rspec {spec}"
 "
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+" let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = "Dispatch rspec {spec}"
 " vim-rspec mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+"turbux mapping 
+let g:no_turbux_mappings = 1
+map <leader>rt <Plug>SendTestToTmux
+map <leader>rT <Plug>SendFocusedTestToTmux
 
 autocmd FileType cucumber compiler cucumber | setl makeprg=cucumber\ \"%:p\"
 autocmd FileType ruby
