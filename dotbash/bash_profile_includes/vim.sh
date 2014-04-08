@@ -8,3 +8,5 @@ else
   alias vimc="vim --servername FOOBAR --remote"
   export TERM="xterm-256color"
 fi
+
+export EDITOR=vi

@@ -1,5 +1,9 @@
 [color]
-  ui = true
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -18,7 +22,8 @@
 	email = dkhroad@gmail.com
 	initials = dk
 [alias]
-	st = status
+  st = status
+  stn = status -uno
 	di = diff
 	co = checkout
 	ci = commit
@@ -26,22 +31,45 @@
   sta = stash
   pl = pull --ff-only
   llog = log --date=local
-    l = log --pretty=oneline --abbrev-commit --graph --decorate
-   # l = log --pretty=format:'%h %s (%an)' --abbrev-commit --graph --decorate
+  l = log --pretty=oneline --abbrev-commit --graph --decorate
+  la = log --pretty=format:'%C(yellow)%h%Cgreen%d %Creset%s %Cblue%an %Cred%ad'  --date=short --decorate --graph 
   # Other useful aliases:
   unstage = reset HEAD
   staged = diff --cached
   unstaged = diff
+  # Fancy logging.
+    #   h = head
+    #   hp = head with patch
+    #   r = recent commits, only current branch
+    #   ra = recent commits, all reachable refs
+    #   l = all commits, only current branch
+    #   la = all commits, all reachable refs
+    head = !git l -1
+    h = !git head
+    hp = "!. ~/.githelpers && show_git_head"
+    r = !git l -30
+    ra = !git r --all
+    l = "!. ~/.githelpers && pretty_git_log"
+    la = !git l --all
+	flog = log --pretty=fuller --decorate
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lol = log --graph --decorate --oneline
+	lola = log --graph --decorate --oneline --all
+	blog = log origin/master... --left-right
+	ds = diff --staged
+	fixup = commit --fixup
+	squash = commit --squash
+	rum = rebase master@{u}
 [apply]
-	whitespace = warn
+	whitespace = nowarn
 [branch]
 	autosetupmerge = true
 [core]
   excludesfile = /Users/dkhroad/.gitignore
   #gitproxy = gitproxy
 	autocrlf = input
-	editor = vi
-	pager = less -FRSX
+	editor = /usr/bin/vim
+	pager = less -FXRS -x2
 [push]
   #only push branches that have been set up to tracka remote branch
   default = current
@@ -55,6 +83,12 @@
 [merge]
 	tool = sublime
 [diff]
-    #external = /home/dkhroad/bin/diff.py
-[diff]
-	tool = meld
+	tool = vimdiff
+[diff "tool.diffmerge"]
+	cmd = diffmerge $LOCAL $REMOTE
+[diff "tool.fmmerge"]
+	cmd = fmmerge $LOCAL $REMOTE
+[init]
+	templatedir = /Users/dkhroad/.git_template
+[rebase]
+	autosquash = true

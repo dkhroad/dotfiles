@@ -79,3 +79,60 @@
 [submodule "dotvim/bundle/vim-railcasts"]
 	path = dotvim/bundle/vim-railcasts
 	url = git://github.com/jpo/vim-railscasts-theme.git
+[submodule "dotvim/bundle/vim-rspec"]
+	path = dotvim/bundle/vim-rspec
+	url = git://github.com/thoughtbot/vim-rspec.git
+[submodule "dotvim/bundle/vim-rvm"]
+	path = dotvim/bundle/vim-rvm
+	url = git://github.com/tpope/vim-rvm.git
+[submodule "dotvim/bundle/vim-bundler"]
+	path = dotvim/bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "dotvim/bundle/quicktask"]
+	path = dotvim/bundle/quicktask
+	url = https://github.com/aaronbieber/quicktask.git
+[submodule "dotvim/bundle/screen"]
+	path = dotvim/bundle/screen
+	url = https://github.com/ervandew/screen.git
+[submodule "dotvim/bundle/vimux"]
+	path = dotvim/bundle/vimux
+	url = https://github.com/benmills/vimux.git
+[submodule "dotvim/bundle/vim-tmux-navigator"]
+	path = dotvim/bundle/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "dotvim/bundle/vimux-ruby-test"]
+	path = dotvim/bundle/vimux-ruby-test
+	url = https://github.com/pgr0ss/vimux-ruby-test.git
+[submodule "dotvim/bundle/vim_markdown_preview"]
+	path = dotvim/bundle/vim_markdown_preview
+	url = https://github.com/usharf/vim-markdown-preview.git
+[submodule "dotvim/bundle/vim_flavored_markdown"]
+	path = dotvim/bundle/vim_flavored_markdown
+	url = https://github.com/jtratner/vim-flavored-markdown.git
+[submodule "dotvim/bundle/vim_turbux"]
+	path = dotvim/bundle/vim_turbux
+	url = https://github.com/jgdavey/vim-turbux.git
+[submodule "dotvim/bundle/tslime.vim"]
+	path = dotvim/bundle/tslime.vim
+	url = https://github.com/jgdavey/tslime.vim.git
+[submodule "dotvim/bundle/vim-ruby"]
+	path = dotvim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby
+[submodule "dotvim/bundle/vim-ragtag"]
+	path = dotvim/bundle/vim-ragtag
+	url = https://github.com/tpope/vim-ragtag.git
+[submodule "dotvim/bundle/vim-misc"]
+	path = dotvim/bundle/vim-misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule "dotvim/bundle/vim-dispatch"]
+	path = dotvim/bundle/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
+[submodule "dotvim/bundle/vim-pathogen"]
+	path = dotvim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "dotvim/bundle/vim_ag"]
+	path = dotvim/bundle/vim_ag
+	url = https://github.com/rking/ag.vim
+[submodule "dotvim/bundle/vim-ruby-xmpfilter"]
+	path = dotvim/bundle/vim-ruby-xmpfilter
+	url = https://github.com/t9md/vim-ruby-xmpfilter

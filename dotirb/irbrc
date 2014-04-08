@@ -6,15 +6,20 @@ require 'irb/ext/save-history'
 require 'awesome_print'
 
 #ConsoleUpdate.editor='vim'
-
-IRB.conf[:PROMPT_MODE] = :SIMPLE
-IRB.conf[:SAVE_HISTORY] = 1000
-IRB.conf[:HISTORY_FILE] = if defined?(Bundler) 
-                              Bundler.tmp.parent.join('.irb_history.rb')
-                          else
-                              "#{ENV['HOME']}/.irb_history"
-                          end
-IRB.conf[:AUTO_INDENT] = true 
+if defined? IRB.conf
+    begin
+    IRB.conf[:PROMPT_MODE] = :SIMPLE
+    IRB.conf[:SAVE_HISTORY] = 1000
+    IRB.conf[:HISTORY_FILE] = if defined?(Bundler) 
+                                  Bundler.tmp.parent.join('.irb_history.rb')
+                              else
+                                  "#{ENV['HOME']}/.irb_history"
+                              end
+    IRB.conf[:AUTO_INDENT] = true 
+    rescue Exception => e
+        p e
+    end
+end
 
 # ActiveRecord::Base.logger.level = 1 if defined? ActiveRecord::Base
 
@@ -46,8 +51,9 @@ if defined? Rails
 end
 
 (begin
-    require 'pry'
-    Pry.start 
-rescue LoadError
-end; exit)
+ require 'pry'
+ Pry.start 
+    rescue LoadError
+      puts "won't load pry"
+ end; exit)
 

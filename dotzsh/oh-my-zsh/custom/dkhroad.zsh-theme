@@ -38,6 +38,10 @@ zstyle ':vcs_info:*:*' actionformats "%S" "%s(%b)%u%c (%a)"
 zstyle ':vcs_info:*:*' formats "%S" "%s(%b)%u%c"
 zstyle ':vcs_info:*:*' nvcsformats "%~" ""
 
+prompt_proxy() {
+    [[ -n $http_proxy ]] && echo -n "%{%F{cyan}%}⚙"
+}
+
 # Define prompts.
 PROMPT="%(0?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})${SSH_TTY:+[%n@%m]}%{$FX[bold]%}%$PROMPT_PATH_MAX_LENGTH<..<"'${vcs_info_msg_0_%%.}'"%<<%(!.$PROMPT_ROOT_END.$PROMPT_DEFAULT_END)%{$FX[no-bold]%}%{$FX[reset]%} "
-RPROMPT="%{$PROMPT_VCS_INFO_COLOR%}"'$vcs_info_msg_1_ $(rvm_prompt_info)'"%{$FX[reset]%}"
+RPROMPT="%{$PROMPT_VCS_INFO_COLOR%}"'$vcs_info_msg_1_ $(rvm_prompt_info) $(prompt_proxy)'"%{$FX[reset]%}"

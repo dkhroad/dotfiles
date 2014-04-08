@@ -1,8 +1,10 @@
-# Chef assumes that it owns this file.
-# Additions to bash should be placed into /Users/dkhroad/.bash_profile_includes with a .sh extension
+export PATH="/usr/local/bin:$PATH"
 
-for file in ~/.bash_profile_includes/*.sh; do
-  [[ -r $file ]] && source $file;
-done
+# Path to the bash it configuration
+export BASH_IT="/Users/dkhroad/.bash_it"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Lock and Load a custom theme file
+export BASH_IT_THEME="bobby"
+
+# Load Bash It
+source $BASH_IT/bash_it.sh
