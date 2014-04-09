@@ -21,9 +21,7 @@ syntax on
 filetype plugin indent on         " Turn on file type detection.
 
 runtime macros/matchit.vim        " Load the matchit plugin.
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
+set clipboard+=unnamed
 set t_Co=256                      " 256 color support
 
 set showcmd                       " Display incomplete commands.
