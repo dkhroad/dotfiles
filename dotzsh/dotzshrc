@@ -47,10 +47,10 @@ source $HOME/.bash_profile_includes/cdr.sh
 source $HOME/.bash_profile_includes/vagrant.sh
 source $HOME/.bash_profile_includes/vim.sh
 source $HOME/.bash_profile_includes/git.sh
+source $HOME/.bash_profile_includes/docker.sh
 
 PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export SC_DB_HOST=127.0.0.1
-
+export DOCKER_HOST=tcp://192.168.59.103:2375
 bindkey -v
 
 # VI MODE KEYBINDINGS (ins mode)
