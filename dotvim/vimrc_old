@@ -1,0 +1,369 @@
+"Example Vim configuration.
+" Copy or symlink to ~/.vimrc or ~/_vimrc.
+
+set background=dark
+"set background=light
+set nocompatible                  " Must come first because it changes other options.
+
+
+let g:pathogen_disabled = [] 
+" call add(g:pathogen_disabled, 'vim_turbux')
+" call add(g:pathogen_disabled, 'tslime.vim')
+call add(g:pathogen_disabled, 'vimux-ruby-test')
+" call add(g:pathogen_disabled, 'vimux')
+" call add(g:pathogen_disabled, 'vim-dispatch')
+call pathogen#infect()
+syntax on
+" silent! call pathogen#runtime_append_all_bundles()
+" silent! call pathogen#helptags()
+ call pathogen#helptags()
+" 
+" syntax enable                     " Turn on syntax highlighting.
+filetype plugin indent on         " Turn on file type detection.
+
+runtime macros/matchit.vim        " Load the matchit plugin.
+set clipboard+=unnamed
+set t_Co=256                      " 256 color support
+
+set showcmd                       " Display incomplete commands.
+set showmode                      " Display the mode you're in.
+
+set backspace=indent,eol,start    " Intuitive backspacing.
+
+set hidden                        " Handle multiple buffers better.
+
+set wildmenu                      " Enhanced command line completion.
+set wildmode=list:longest         " Complete files like a shell.
+
+set ignorecase                    " Case-insensitive searching.
+set smartcase                     " But case-sensitive if expression contains a capital letter.
+
+set number                        " Show line numbers.
+set ruler                         " Show cursor position.
+
+set incsearch                     " Highlight matches as you type.
+set hlsearch                      " Highlight matches.
+
+set wrap                          " Turn on line wrapping.
+set scrolloff=3                   " Show 3 lines of context around the cursor.
+
+set title                         " Set the terminal's title
+
+set visualbell                    " No beeping.
+
+set nobackup                      " Don't make a backup before overwriting a file.
+set nowritebackup                 " And again.
+set noswapfile                    " No swap files please
+"set directory=$HOME/.vim/tmp//,.  " Keep swap files in one location
+
+" UNCOMMENT TO USE
+set tabstop=2                    " Global tab width.
+set shiftwidth=2                 " And again, related.
+set expandtab                    " Use spaces instead of tabs
+
+set laststatus=2                  " Show the status line all the time
+" Useful status information at bottom of screen
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+
+
+"colorscheme vividchalk
+"colorscheme cobalt
+"colorscheme solarized
+colorscheme railscasts
+
+" Tab mappings.
+map <leader>tt :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tm :tabmove
+
+" NERDTree
+map <leader>nt :NERDTreeToggle<cr>
+map <leader>nf :NERDTreeFocus<cr>
+
+
+" Uncomment to use Jamis Buck's file opening plugin
+"map <Leader>t :FuzzyFinderTextMate<Enter>
+
+" Controversial...swap colon and semicolon for easier commands
+"nnoremap ; :
+"nnoremap : ;
+
+"vnoremap ; :
+"vnoremap : ;
+
+"Sudo
+cmap w!! w !sudo tee % > /dev/null
+
+" Automatic fold settings for specific files. Uncomment to use.
+autocmd FileType ruby setlocal foldmethod=syntax foldlevel=20 shiftwidth=2 tabstop=2
+" autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
+
+" For the MakeGreen plugin and Ruby RSpec. Uncomment to use.
+autocmd BufNewFile,BufRead *_spec.rb compiler rspec
+
+"Markdown to HTML
+map <leader>mdp :!flavor % > /tmp/preview.html && open /tmp/preview.html<cr>
+map <leader>md :!flavor % > /tmp/preview.html<cr>
+
+"RSpec
+"
+function! RSpecFile()
+  execute("!clear && bin/rspec " . expand("%p"))
+endfunction
+map <leader>R :call RSpecFile() <CR>
+command! RSpecFile call RSpecFile()
+
+function! RSpecCurrent()
+  execute("!clear && bin/rspec " . expand("%p") . ":" . line("."))
+endfunction
+map <leader>r :call RSpecCurrent() <CR>
+command! RSpecCurrent call RSpecCurrent()
+
+
+
+"suppress lust warnings
+let g:LustyExplorerSuppressRubyWarning = 1
+
+"Don't break by default in php debugger
+let g:dbgPavimBreakAtEntry = 0
+
+"search all gems in curren RVM gemset
+autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
+      \ pathogen#split(&tags) +
+      \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
+
+"Notes plugin 
+:let g:notes_suffix = '.txt'
+:let g:notes_directories = ['~/Documents/Notes']
+:let g:notes_title_sync = 'rename_file'
+
+"Ctrl-P plugin 
+" Sane Ignore For ctrlp
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|log\/$\|\.svn$\|\.yardoc\|public\/assets\|public\/images\|public\/system\|data\|log\|tmp\|coverage$'
+  \ }
+let g:ctrlp_clear_cache_on_exit = 0 "enable cross-session caching
+"let g:ctrlp_cmd = 'CtrlPLastMode'
+"let g:ctrlp_working_path_mode ='rc'
+
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
+                          \ 'undo', 'line', 'changes',  'bookmarkdir']
+map <Ctrl-;> :CtrlpBuffer<CR>
+map <leader>pm :CtrlPMixed<CR>
+map <leader>pp :CtrlPBuffer<CR>
+map <leader>pr :CtrlPMRU<CR>
+map <leader>pc :CtrlPClearCache<CR>
+map <leader>pcc :CtrlPClearAllCache<CR>
+
+" autosave 
+:au FocusLost * silent! wa
+:set autowriteall
+
+let g:dbgPavimBreakAtEntry = 0
+
+
+" map <Leader>t :RunAllRubyTests
+" map <Leader>s :RunRubyFocusedContext
+" let g:rspec_command = bin/rspec
+
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" let g:rspec_command = "!bin/rspec {spec}"
+"
+"let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = "Dispatch spring rspec {spec}"
+" vim-rspec mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+"turbux mapping 
+let g:no_turbux_mappings = 1
+let g:turbux_runner = 'tslime'
+map <leader>rt <Plug>SendTestToTmux
+map <leader>rT <Plug>SendFocusedTestToTmux
+
+autocmd FileType cucumber compiler cucumber | setl makeprg=cucumber\ \"%:p\"
+autocmd FileType ruby
+      \ if expand('%') =~# '_test\.rb$' |
+      \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
+      \ elseif expand('%') =~# '_spec\.rb$' |
+      \   compiler rspec | setl makeprg=rspec\ \"%:p\" |
+      \ else |
+      \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
+      \ endif
+autocmd User Bundler
+      \ if &makeprg !~# 'bundle' | setl makeprg^=bundle\ exec\  | endif
+
+" setglobal relativenumber
+autocmd WinEnter * :setlocal relativenumber
+autocmd WinLeave,FocusLost * :setlocal number
+autocmd InsertEnter * :setlocal number
+autocmd InsertLeave * :setlocal relativenumber
+
+function! g:ToggleNuMode()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+set relativenumber "default line number mode
+
+map <leader>ln :call g:ToggleNuMode()<CR>
+nnoremap <leader><leader> <c-^>
+
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+"Easy Window Navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+inoremap <M-o>       <Esc>o
+inoremap <C-j>       <Down>
+let g:ragtag_global_maps = 1
+
+"xmpfilter bindings
+autocmd FileType ruby nmap <buffer> <F7> <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <F7> <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <F7> <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <F8> <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <F8> <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <F8> <Plug>(xmpfilter-run)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RUNNING TESTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! MapCR()
+  nnoremap <leader><cr> :call RunTestFile()<cr>
+endfunction
+call MapCR()
+nnoremap <leader>T :call RunNearestTest()<cr>
+nnoremap <leader>t :silent! call RunTestFile('')<cr>
+nnoremap <leader>a :call RunTests('')<cr>
+nnoremap <leader>c :w\|:!script/features<cr>
+nnoremap <leader>w :w\|:!script/features --profile wip<cr>
+
+function! RunTestFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+    if in_test_file
+        call SetTestFile()
+    elseif !exists("t:grb_test_file")
+        return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number)
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    if expand("%") != ""
+      :w
+    end
+    if match(a:filename, '\.feature$') != -1
+        exec ":!script/features " . a:filename
+    else
+        " First choice: project-specific test script
+        if filereadable("script/test")
+            exec ":!script/test " . a:filename
+        " Fall back to the .test-commands pipe if available, assuming someone
+        " is reading the other side and running the commands
+        elseif filewritable(".test-commands")
+          let cmd = 'rspec --color --fail-fast --format progress --require "~/lib/vim_rspec_formatter" --format VimFormatter --out tmp/quickfix'
+          exec ":silent !echo " . cmd . " " . a:filename . " > .test-commands"
+
+          " Write an empty string to block until the command completes
+          "sleep 100m " milliseconds
+          ":silent !echo > .test-commands
+          redraw!
+        " Fall back to a blocking test run with Bundler
+        elseif filereadable("Gemfile")
+            exec ":!bundle exec rspec --color " . a:filename
+        " Fall back to a normal blocking test run
+        else
+            exec ":!rspec --color " . a:filename
+        end
+    end
+endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Diff tab management: open the current git diff in a tab
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! GdiffInTab tabedit %|vsplit|Gdiff
+nnoremap <leader>d :GdiffInTab<cr>
+nnoremap <leader>D :tabclose<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test quickfix list management
+"
+" If the tests write a tmp/quickfix file, these mappings will navigate through
+" it
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! GetBufferList()
+  redir =>buflist
+  silent! ls
+  redir END
+  return buflist
+endfunction
+
+function! BufferIsOpen(bufname)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      return 1
+    endif
+  endfor
+  return 0
+endfunction
+
+function! ToggleQuickfix()
+  if BufferIsOpen("Quickfix List")
+    cclose
+  else
+    call OpenQuickfix()
+  endif
+endfunction
+
+function! OpenQuickfix()
+  cgetfile tmp/quickfix
+  topleft cwindow
+  if &ft == "qf"
+      cc
+  endif
+endfunction
+
+nnoremap <leader>q :call ToggleQuickfix()<cr>
+nnoremap <leader>Q :cc<cr>
+nnoremap <leader>j :cnext<cr>
+nnoremap <leader>k :cprev<cr>
+
