@@ -13,11 +13,13 @@ Plugin 'gmarik/Vundle.vim'
 " NERDTree
 Plugin 'scrooloose/nerdtree.git'
 map <leader>nt :NERDTreeToggle<cr>
-map <leader>nf :NERDTreeFocus<cr>
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-vividchalk'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
 Plugin 'bling/vim-airline'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'altercation/vim-colors-solarized'
