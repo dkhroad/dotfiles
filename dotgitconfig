@@ -18,10 +18,8 @@
   changed = green
   untracked = red
 [user]
-	name = Devinder Khroad
-	email = dkhroad@gmail.com
-	initials = dk
 [alias]
+  ctags = !.git/hooks/ctags
   st = status
   stn = status -uno
 	di = diff
@@ -92,3 +90,7 @@
 	templatedir = /Users/dkhroad/.git_template
 [rebase]
 	autosquash = true
+[user]
+	name = Devinder Khroad
+	initials = dk
+	email = dkhroad@gmail.com

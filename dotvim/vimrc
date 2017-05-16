@@ -25,14 +25,17 @@ Plugin 'jpo/vim-railscasts-theme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'sfsekaran/cobalt.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'sjl/tslime.vim'
 
 Plugin 'kien/ctrlp.vim'
+let g:ctrlp_working_path_mode = 'rc'
 Plugin 'tpope/vim-endwise'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'sjbach/lusty'
 
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
+Plugin 'elixir-lang/vim-elixir'
 
 map <leader>a :Ag!<space>
 map <leader>A :Ag! <C-R><C-W><CR>
@@ -110,8 +113,8 @@ set laststatus=2                  " Show the status line all the time
 set background=dark
 "colorscheme vividchalk
 "colorscheme cobalt
-colorscheme solarized
-"colorscheme railscasts
+"colorscheme solarized
+colorscheme railscasts
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily
@@ -162,6 +165,16 @@ set relativenumber "default line number mode
 map <leader>ln :call g:ToggleNuMode()<CR>
 nnoremap <leader><leader> <c-^>
 
+inoremap ;a <Esc>
+inoremap ;d <Esc>:update<Cr>
+inoremap ;f <C-O>:update<Cr>
+nnoremap ;f :update<CR>
+
+"tslime 
+let g:tslime_ensure_trailing_newlines = 1
+let g:tslime_normal_mapping = '<localleader>t'
+let g:tslime_visual_mapping = '<localleader>t'
+let g:tslime_vars_mapping = '<localleader>T'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LAST SECTION

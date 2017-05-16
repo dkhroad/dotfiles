@@ -11,4 +11,4 @@ function enable_proxy () {
     export no_proxy="localhost,127.0.0.1,10.0.2.15,10.0.2.2,10.0.2.3"
 }
 
-enable_proxy 
+#enable_proxy 
