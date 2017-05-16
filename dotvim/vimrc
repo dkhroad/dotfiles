@@ -30,7 +30,6 @@ Plugin 'sjl/tslime.vim'
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
 
-Plugin 'elixir-lang/vim-elixir'
 
 " The Silver Searcher
 if executable('ag')
@@ -130,13 +129,8 @@ set laststatus=2                  " Show the status line all the time
 set background=dark
 "colorscheme vividchalk
 "colorscheme cobalt
-<<<<<<< HEAD
 "colorscheme solarized
 colorscheme railscasts
-=======
-colorscheme solarized
-" colorscheme railscasts
->>>>>>> 415b81c68d516a8885b22ab06f3545f2073ca365
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily
