@@ -26,7 +26,6 @@ namespace :update do
     :snipmate_vim => "git://github.com/msanders/snipmate.vim.git",
     :vim_unimpaired => "git://github.com/tpope/vim-unimpaired.git",
     :vim_rooter => "git://github.com/airblade/vim-rooter.git",
-    :vim_markdown => "git://github.com/tpope/vim-markdown.git",
     :nerdtree => "git://github.com/scrooloose/nerdtree.git" ,
     :vim_ctrlp => "git://github.com/kien/ctrlp.vim.git" ,
     :vim_easymotion => "git://github.com/Lokaltog/vim-easymotion.git",
