@@ -29,9 +29,25 @@ Plugin 'sjl/tslime.vim'
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
+
+Plugin 'elixir-lang/vim-elixir'
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+
 Plugin 'tpope/vim-endwise'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'sjbach/lusty'
+"Plugin 'sjbach/lusty'
 
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
@@ -43,7 +59,8 @@ map <leader>A :Ag! <C-R><C-W><CR>
 " Use ag for search, it's much faster than ack.
 " See https://github.com/ggreer/the_silver_searcher
 " on mac: brew install the_silver_searcher
-let g:agprg = 'ag --nogroup --nocolor --column --smart-case'
+let g:ag_prg = 'ag --nogroup --nocolor --column --smart-case'
+let g:ag_working_path_mode="r"
 
 
 
@@ -113,8 +130,13 @@ set laststatus=2                  " Show the status line all the time
 set background=dark
 "colorscheme vividchalk
 "colorscheme cobalt
+<<<<<<< HEAD
 "colorscheme solarized
 colorscheme railscasts
+=======
+colorscheme solarized
+" colorscheme railscasts
+>>>>>>> 415b81c68d516a8885b22ab06f3545f2073ca365
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily
