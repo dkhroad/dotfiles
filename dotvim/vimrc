@@ -26,6 +26,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'sfsekaran/cobalt.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'sjl/tslime.vim'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'christoomey/vim-tmux-runner'
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
@@ -127,10 +129,11 @@ set laststatus=2                  " Show the status line all the time
 " Color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
+"set background=light
 "colorscheme vividchalk
 "colorscheme cobalt
-"colorscheme solarized
-colorscheme railscasts
+colorscheme solarized
+"colorscheme railscasts
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily
@@ -192,6 +195,41 @@ let g:tslime_normal_mapping = '<localleader>t'
 let g:tslime_visual_mapping = '<localleader>t'
 let g:tslime_vars_mapping = '<localleader>T'
 
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 | 
+    \ set shiftwidth=4 |
+    \ set textwidth=79 | 
+    \ set expandtab | 
+    \ set autoindent | 
+    \ set fileformat=unix |
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2 | 
+    \ set softtabstop=2 | 
+    \ set shiftwidth=2 | 
+
+"flag unnecessary white space
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" automatically rebalance windows on a vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to rebalance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+
+let g:VtrUseVtrMaps = 1
+
+"Vim Tmux runner modifications for Python
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 1
+
+nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
+nnoremap <leader>pyt :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'python'}<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LAST SECTION
 " Include user's local vim config

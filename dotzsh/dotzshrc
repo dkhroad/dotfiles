@@ -50,8 +50,9 @@ source $HOME/.bash_profile_includes/git.sh
 source $HOME/.bash_profile_includes/docker.sh
 
 PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export DOCKER_HOST=tcp://192.168.59.103:2375
+#export DOCKER_HOST=tcp://192.168.59.103:2375
 bindkey -v
+source $HOME/.bash_profile_includes/ensure_tmux_is_running
 
 # VI MODE KEYBINDINGS (ins mode)
 bindkey -M viins '^a'    beginning-of-line
@@ -97,3 +98,9 @@ bindkey -M vicmd '\e[6~' history-beginning-search-forward  # PageDown
 
 # to load project specific rvm gemsets
 cd ..;1
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/dkhroad/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/dkhroad/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/dkhroad/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/dkhroad/google-cloud-sdk/completion.zsh.inc'; fi
