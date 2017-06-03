@@ -135,6 +135,8 @@ set background=dark
 colorscheme solarized
 "colorscheme railscasts
 
+map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
