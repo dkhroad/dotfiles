@@ -28,6 +28,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'sjl/tslime.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'christoomey/vim-tmux-runner'
+Plugin 'fatih/vim-go'
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
@@ -176,7 +177,8 @@ autocmd InsertLeave * :setlocal relativenumber
 
 function! g:ToggleNuMode()
   if(&relativenumber == 1)
-    set number
+    " set number
+    set nornu
   else
     set relativenumber
   endif
