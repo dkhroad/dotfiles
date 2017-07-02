@@ -149,6 +149,9 @@ endfunction
 autocmd FileType help map <buffer> q :exe QuitWithQ()<cr>
 autocmd FileType help map <buffer> <leader>w :exe QuitWithQ()<cr>
 
+" Shortcut to mute highlighting
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Persistent undo
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,7 +191,7 @@ set relativenumber "default line number mode
 map <leader>ln :call g:ToggleNuMode()<CR>
 nnoremap <leader><leader> <c-^>
 
-inoremap ;a <Esc>
+inoremap ;a <Esc> 
 inoremap ;d <Esc>:update<Cr>
 inoremap ;f <C-O>:update<Cr>
 nnoremap ;f :update<CR>
@@ -234,6 +237,75 @@ let g:VtrAppendNewline = 1
 
 nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
 nnoremap <leader>pyt :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'python'}<cr>
+
+set pastetoggle=<F5>
+
+" vim-go
+" write the contents of the file automatically when we call make
+set autowrite
+nnoremap <leader>c :cclose<CR>
+nnoremap <leader>a <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+" run :GoBuild or :GoTest based on the go file
+function! s:build_go_files() 
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test)\.go$'
+    call go#test#Test(0,1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+let g:go_list_type = "quickfix"
+let g:go_highlight_types = 1
+let g:go_highlight_field = 1
+let g:go_highlight_functions =1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+" let g:gometalinter_enabled = ['vet','golint','errcheck']
+" let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "5s"
+let g:go_decls_include = "func,type"
+let g:go_fmt_command = "goimports"
+"let g:go_fmt_autosave = 0
+let g:go_auto_type_info = 1
+set updatetime=100
+
+" let g:go_auto_sameids = 1
+
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0,'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0,'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0,'split')
+autocmd Filetype go nmap <Leader>d <Plug>(go-describe)
+
+
+set completeopt=menuone,noinsert,preview
+function! Smart_TabComplete()
+  let line = getline('.')                         " current line
+
+  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+                                                  " line to one character right
+                                                  " of the cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
+endfunction
+
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LAST SECTION
 " Include user's local vim config
