@@ -32,7 +32,12 @@ Plugin 'fatih/vim-go'
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
-
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
+    \ 'PrtHistory(-1)':       ['<down>'],
+    \ 'PrtHistory(1)':        ['<up>'],
+    \ }
 
 " The Silver Searcher
 if executable('ag')
@@ -195,6 +200,7 @@ inoremap ;a <Esc>
 inoremap ;d <Esc>:update<Cr>
 inoremap ;f <C-O>:update<Cr>
 nnoremap ;f :update<CR>
+nnoremap ;d :update<CR>
 
 "tslime 
 let g:tslime_ensure_trailing_newlines = 1
