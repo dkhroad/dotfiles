@@ -1,6 +1,5 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 set rtp+=~/.vimplugins/Vundle.vim
 call vundle#begin('~/.vimplugins')
 
@@ -279,6 +278,7 @@ let g:go_decls_include = "func,type"
 let g:go_fmt_command = "goimports"
 "let g:go_fmt_autosave = 0
 let g:go_auto_type_info = 1
+let g:go_gocode_unimported_packages = 1
 set updatetime=100
 
 " let g:go_auto_sameids = 1
