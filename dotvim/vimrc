@@ -28,6 +28,7 @@ Plugin 'sjl/tslime.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'fatih/vim-go'
+Plugin 'garyburd/go-explorer'
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
@@ -59,8 +60,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'elixir-lang/vim-elixir'
 
-map <leader>a :Ag!<space>
-map <leader>A :Ag! <C-R><C-W><CR>
+map <leader>A :Ag!<space>
+map <leader>a :Ag! <C-R><C-W><CR>
 
 " Use ag for search, it's much faster than ack.
 " See https://github.com/ggreer/the_silver_searcher
@@ -250,6 +251,7 @@ set pastetoggle=<F5>
 set autowrite
 nnoremap <leader>c :cclose<CR>
 nnoremap <leader>a <Plug>(go-coverage-toggle)
+map <leader>k :GeDoc <C-R><C-W><CR>
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
 " run :GoBuild or :GoTest based on the go file
