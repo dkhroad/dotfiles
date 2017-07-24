@@ -19,6 +19,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-markdown'
+Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'vimwiki/vimwiki'
 Plugin 'bling/vim-airline'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'altercation/vim-colors-solarized'
@@ -40,7 +43,7 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtHistory(-1)':       ['<down>'],
     \ 'PrtHistory(1)':        ['<up>'],
     \ }
-
+let g:ctrlp_match_window = 'results:100'
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
@@ -141,7 +144,7 @@ set background=dark
 "colorscheme vividchalk
 "colorscheme cobalt
 colorscheme solarized
-"colorscheme railscasts
+" colorscheme railscasts
 
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
@@ -198,11 +201,11 @@ set relativenumber "default line number mode
 map <leader>ln :call g:ToggleNuMode()<CR>
 nnoremap <leader><leader> <c-^>
 
-inoremap ;a <Esc> 
-inoremap ;d <Esc>:update<Cr>
-inoremap ;f <C-O>:update<Cr>
-nnoremap ;f :update<CR>
-nnoremap ;d :update<CR>
+" inoremap ;a <Esc> 
+" inoremap ;d <Esc>:update<Cr>
+" inoremap ;f <C-O>:update<Cr>
+" nnoremap ;f :update<CR>
+" nnoremap ;d :update<CR>
 
 "tslime 
 let g:tslime_ensure_trailing_newlines = 1
@@ -257,6 +260,8 @@ nnoremap <leader>a <Plug>(go-coverage-toggle)
 map <leader>k :GeDoc <C-R><C-W><CR>
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>gi <Plug>(go-info)
+" autocmd FileType go nmap <leader>d <Plug>(go-decls)
 " run :GoBuild or :GoTest based on the go file
 function! s:build_go_files() 
   let l:file = expand('%')
@@ -282,9 +287,9 @@ let g:go_metalinter_deadline = "5s"
 let g:go_decls_include = "func,type"
 let g:go_fmt_command = "goimports"
 "let g:go_fmt_autosave = 0
-let g:go_auto_type_info = 1
-let g:go_gocode_unimported_packages = 1
+let g:go_auto_type_info = 0
 set updatetime=100
+let g:go_gocode_unimported_packages = 1
 
 " let g:go_auto_sameids = 1
 
