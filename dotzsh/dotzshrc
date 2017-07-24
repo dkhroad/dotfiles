@@ -39,7 +39,7 @@ setopt AUTO_CD
 # plugins=(vi-mode z  profiles)
 plugins=(git sublime vi-mode z  profiles)
 
-source ~/.oh-my-zsh/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
