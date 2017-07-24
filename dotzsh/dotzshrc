@@ -49,7 +49,7 @@ source $HOME/.bash_profile_includes/cdr.sh
 # cd ..;1
 source $HOME/.bash_profile_includes/vagrant.sh
 source $HOME/.bash_profile_includes/vim.sh
-source $HOME/.bash_profile_includes/git.sh
+# source $HOME/.bash_profile_includes/git.sh
 source $HOME/.bash_profile_includes/docker.sh
 source $HOME/.bash_profile_includes/go.sh
 source $HOME/.bash_profile_includes/aws.sh
