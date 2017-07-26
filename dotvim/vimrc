@@ -33,9 +33,19 @@ Plugin 'christoomey/vim-tmux-runner'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'fatih/vim-go'
 Plugin 'garyburd/go-explorer'
+Plugin 'easymotion/vim-easymotion'
+Bundle 'reedes/vim-litecorrect'
+Bundle 'reedes/vim-textobj-sentence'
+Bundle 'reedes/vim-textobj-quote'
+Bundle 'reedes/vim-wordy'
+Plugin 'jacoborus/tender.vim'
+
+Plugin 'JamshedVesuna/vim-markdown-preview'
+let vim_markdown_preview_toggle=2 "display images
+let vim_markdown_preview_github=1 "use grip 
+let vim_markdown_preview_hotkey='<C-m>'
 
 Plugin 'kien/ctrlp.vim'
-Plugin 'jacoborus/tender.vim'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
@@ -44,6 +54,7 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtHistory(1)':        ['<up>'],
     \ }
 let g:ctrlp_match_window = 'results:100'
+
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
@@ -201,7 +212,7 @@ set relativenumber "default line number mode
 map <leader>ln :call g:ToggleNuMode()<CR>
 nnoremap <leader><leader> <c-^>
 
-" inoremap ;a <Esc> 
+inoremap <leader>e <Esc> 
 " inoremap ;d <Esc>:update<Cr>
 " inoremap ;f <C-O>:update<Cr>
 " nnoremap ;f :update<CR>
