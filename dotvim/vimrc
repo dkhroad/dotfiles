@@ -39,6 +39,7 @@ Bundle 'reedes/vim-textobj-sentence'
 Bundle 'reedes/vim-textobj-quote'
 Bundle 'reedes/vim-wordy'
 Plugin 'jacoborus/tender.vim'
+Plugin 'flazz/vim-colorschemes'
 
 Plugin 'JamshedVesuna/vim-markdown-preview'
 let vim_markdown_preview_toggle=2 "display images
