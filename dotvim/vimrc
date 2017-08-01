@@ -42,9 +42,9 @@ Plugin 'jacoborus/tender.vim'
 Plugin 'flazz/vim-colorschemes'
 
 Plugin 'JamshedVesuna/vim-markdown-preview'
-let vim_markdown_preview_toggle=2 "display images
+let vim_markdown_preview_toggle=1 "display images
 let vim_markdown_preview_github=1 "use grip 
-let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_hotkey='<leader>`'
 
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rc'
