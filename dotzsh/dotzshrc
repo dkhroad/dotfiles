@@ -37,7 +37,7 @@ setopt AUTO_CD
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
 # plugins=(vi-mode z  profiles)
-plugins=(git pass sublime vi-mode z  profiles)
+plugins=(git pass aws sublime vi-mode z  profiles)
 
 source $ZSH/oh-my-zsh.sh
 
