@@ -53,10 +53,11 @@ source $HOME/.bash_profile_includes/vim.sh
 source $HOME/.bash_profile_includes/docker.sh
 source $HOME/.bash_profile_includes/go.sh
 source $HOME/.bash_profile_includes/aws.sh
+source $HOME/.bash_profile_includes/rbenv.sh
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
-PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$HOME/bin:/usr/local/bin:$PATH
 #export DOCKER_HOST=tcp://192.168.59.103:2375
 bindkey -v
 zle -N edit-command-line
