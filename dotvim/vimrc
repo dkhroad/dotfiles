@@ -56,6 +56,8 @@ let g:ctrlp_prompt_mappings = {
     \ }
 let g:ctrlp_match_window = 'results:100'
 
+Plugin 'hrj/vim-Drawit'
+
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
@@ -407,6 +409,12 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+" switch on local spelling
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+set complete+=kspell
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LAST SECTION
 " Include user's local vim config
