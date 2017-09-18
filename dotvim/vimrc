@@ -57,6 +57,8 @@ let g:ctrlp_prompt_mappings = {
     \ }
 let g:ctrlp_match_window = 'results:100'
 
+Plugin 'hrj/vim-Drawit'
+
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
@@ -343,6 +345,11 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+
+" switch on local spelling
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+set complete+=kspell
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LAST SECTION
