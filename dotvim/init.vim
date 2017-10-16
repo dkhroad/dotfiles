@@ -1,2 +1,3 @@
 set runtimepath+=~/.vim,~/.vim/after
-source ~/.vimrc
+set packpath+=~/.vim
+source ~/.vimrc.neo
