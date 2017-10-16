@@ -32,9 +32,12 @@ colorscheme solarized8_dark
 
 " Terminal mode config {{{2
 if has('nvim') 
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <A-[> <Esc
+  tnoremap <A-[> <Esc>
   tnoremap <expr> <A-r> '<C-\><C-n>"'.nr2char(getchar()).'pi'
+  tnoremap <a-h> <c-\><c-n><c-w>h
+  tnoremap <a-j> <c-\><c-n><c-w>j
+  tnoremap <a-k> <c-\><c-n><c-w>k
+  tnoremap <a-l> <c-\><c-n><c-w>
 endif
 
 " vimtest {{{2
