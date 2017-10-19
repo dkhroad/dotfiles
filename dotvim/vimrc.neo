@@ -14,9 +14,13 @@ filetype off                  " required
 
 " let g:mapleader=','
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" Color scheme
-""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Plugin configuration {{{1
+
+" vim-gutentags {{{2
+  let g:gutentags_cache_dir= '~/.tags_cache'
+
+" Colorscheme {{{2 
 set termguicolors
 set background=dark
 " set background=light
@@ -24,11 +28,6 @@ set background=dark
 "colorscheme cobalt
 colorscheme solarized8_dark
 " colorscheme railscasts
-
-" Plugin configuration {{{1
-
-" vim-gutentags {{{2
-  let g:gutentags_cache_dir= '~/.tags_cache'
 
 " Terminal mode config {{{2
 if has('nvim') 
@@ -40,8 +39,9 @@ if has('nvim')
   tnoremap <a-l> <c-\><c-n><c-w>
 endif
 
-" buffers {{{2
-map <leader>b :buffers<CR>:buffer<space>
+" Files & buffers {{{2
+map <leader>b :Buffers<CR>
+map <leader>f :Files<CR>
 
 " vimtest {{{2
 :let test#strategy='vtr'

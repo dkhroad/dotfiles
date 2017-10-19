@@ -4,6 +4,7 @@ ln -s  `pwd`/dotvim/gvimrc ~/.gvimrc
 ln -s  `pwd`/dotvim/vimrc.neo ~/.vimrc
 ln -s  `pwd`/dotirb/irbc  ~/.irbrc
 ln -s  `pwd`/dotzsh/dotzshrc ~/.zshrc # you will also need to clone oh-my-zsh repo
+
 ln -s  `pwd`/dotbash/bash_profile_includes ~/.bash_profile_includes
 
 mkdir -p ~/.config/nvim
