@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -54,6 +55,8 @@ source $HOME/.bash_profile_includes/docker.sh
 source $HOME/.bash_profile_includes/go.sh
 source $HOME/.bash_profile_includes/aws.sh
 source $HOME/.bash_profile_includes/rbenv.sh
+source $HOME/.bash_profile_includes/code.sh
+source $HOME/.bash_profile_includes/nvm.sh
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
@@ -112,3 +115,5 @@ if [ -f '/Users/dkhroad/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/dk
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/dkhroad/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/dkhroad/google-cloud-sdk/completion.zsh.inc'; fi
+
+# zprof

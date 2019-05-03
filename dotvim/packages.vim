@@ -13,7 +13,6 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('dsawardekar/riml.vim', {'type': 'opt'})
 
 " Optional packages. Use packadd  
-call minpac#add('scrooloose/nerdtree',{'type': 'opt'})
 call minpac#add('kien/ctrlp.vim',{'type': 'opt'})
 
 " General enhancements
@@ -39,10 +38,16 @@ call minpac#add('neomake/neomake')
 call minpac#add('tommcdo/vim-exchange')
 call minpac#add('airblade/vim-gitgutter')
 call minpac#add('szw/vim-g')
+call minpac#add('scrooloose/nerdtree')
 " call minpac#add('kana/vim-smartinput')
 call minpac#add('bling/vim-airline')
 if has('nvim')
   call minpac#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'})
+  call minpac#add('deoplete-plugins/deoplete-jedi')
+  call minpac#add('carlitux/deoplete-ternjs')
+  call minpac#add('Shougo/neosnippet')
+  call minpac#add('Shougo/neosnippet-snippets')
+  call minpac#add('ternjs/tern_for_vim')
 endif
 call minpac#add('sheerun/vim-polyglot')
 call minpac#add('janko-m/vim-test')

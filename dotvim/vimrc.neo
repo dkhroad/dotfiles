@@ -1,5 +1,5 @@
-" vim: nowrap fdm=marker
 scriptencoding utf-8
+" vim: nowrap fdm=marker
 
 if !has('nvim')
   unlet! skip_defaults_vim
@@ -30,7 +30,7 @@ set background=dark
 " set background=light
 "colorscheme vividchalk
 "colorscheme cobalt
-colorscheme solarized8_dark
+colorscheme solarized8
 " colorscheme railscasts
 
 " Terminal mode config {{{2
@@ -48,7 +48,7 @@ map <leader>b :Buffers<CR>
 map <leader>f :Files<CR>
 
 " vimtest {{{2
-:let test#strategy='vtr'
+:let test#strategy='dispatch'
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
@@ -70,6 +70,8 @@ let g:netrw_liststyle = 3
 
 " Deoplete {{{2
 let g:deoplete#enable_at_startup = 1
+let g:neosnippet#enable_completed_snippet = 1
+highlight Pmenu ctermbg=gray guibg=gray
 " use tab for completion
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 
@@ -93,6 +95,7 @@ nmap <leader>+ :<c-u>call Solarized8Contrast(+v:count1)<cr>
 
 " NERDTree
 map <leader>nt :NERDTreeToggle<cr>
+map <leader>n :NERDTreeFind<cr>
 let vim_markdown_preview_toggle=1 "display images
 let vim_markdown_preview_github=1 "use grip 
 let vim_markdown_preview_hotkey='<leader>`'
@@ -179,8 +182,9 @@ set expandtab                    " Use spaces instead of tabs
 
 set laststatus=2                  " Show the status line all the time
 
-set cursorline 
-set cursorcolumn
+set shell=/bin/bash
+"set cursorline 
+"set cursorcolumn
 set title
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -278,9 +282,9 @@ au BufNewFile,BufRead *.js,*.html,*.css
     \ set shiftwidth=2 | 
 
 "flag unnecessary white space
-highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
+"highlight BadWhitespace ctermbg=red guibg=darkred
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+let g:python_highlight_space_errors = 0
 " automatically rebalance windows on a vim resize
 autocmd VimResized * :wincmd =
 
@@ -352,11 +356,11 @@ autocmd Filetype go nmap <Leader>d <Plug>(go-describe)
 
 
 " Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
 " switch on local spelling
