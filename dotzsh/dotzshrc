@@ -57,6 +57,7 @@ source $HOME/.bash_profile_includes/aws.sh
 source $HOME/.bash_profile_includes/rbenv.sh
 source $HOME/.bash_profile_includes/code.sh
 source $HOME/.bash_profile_includes/nvm.sh
+source $HOME/.bash_profile_includes/hyperledger.sh
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 

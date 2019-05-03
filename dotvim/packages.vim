@@ -51,6 +51,7 @@ if has('nvim')
 endif
 call minpac#add('sheerun/vim-polyglot')
 call minpac#add('janko-m/vim-test')
+call minpac#add('vim-scripts/taglist.vim')
 call minpac#add('ludovicchabant/vim-gutentags')
 
 
@@ -79,7 +80,7 @@ call minpac#add('nelstrom/vim-docopen')
 
 " Markdown
 call minpac#add('tpope/vim-markdown')
-call minpac#add('nelstrom/vim-markdown-folding')
+" call minpac#add('nelstrom/vim-markdown-folding')
 call minpac#add('junegunn/vim-emoji', {'type': 'opt'})
 
 " JavaScript
@@ -100,6 +101,9 @@ call minpac#add('garyburd/go-explorer')
 " Elixir
 call minpac#add('elixir-lang/vim-elixir')
 call minpac#add('slashmili/alchemist.vim')
+
+" Python
+call minpac#add('zchee/deoplete-jedi')
 
 " Colorschemes
 call minpac#add('lifepillar/vim-solarized8', {})

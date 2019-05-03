@@ -1,5 +1,5 @@
-scriptencoding utf-8
 " vim: nowrap fdm=marker
+scriptencoding utf-9
 
 if !has('nvim')
   unlet! skip_defaults_vim
@@ -73,7 +73,7 @@ let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
 highlight Pmenu ctermbg=gray guibg=gray
 " use tab for completion
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<tab>"
 
 
 
@@ -274,7 +274,7 @@ au BufNewFile,BufRead *.py
     \ set textwidth=79 | 
     \ set expandtab | 
     \ set autoindent | 
-    \ set fileformat=unix |
+    \ set fileformat=unix 
 
 au BufNewFile,BufRead *.js,*.html,*.css
     \ set tabstop=2 | 
@@ -362,6 +362,8 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" Cython support for vim taglist
+let tlist_pyrex_settings='python;c:classe;m:memder;f:function'
 
 " switch on local spelling
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
