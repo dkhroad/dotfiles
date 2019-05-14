@@ -9,4 +9,12 @@ else
   export TERM="xterm-256color"
 fi
 
-export EDITOR=vi
+alias vim="nvim"
+alias vi="nvim"
+export EDITOR=nvim
+
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+  export VISUAL="nvr --cc split --remote-wait +'set bufhidden=wipe'"
+else 
+  export VISUAL=nvim
+fi
