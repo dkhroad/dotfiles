@@ -17,8 +17,16 @@
         "command": "workbench.action.navigateDown"
     },
     {
-        "key", "ctrl-w c",
+        "key": "ctrl-w c",
         "command": "workbench.action.closeActiveEditor",
         "when": "vim.mode != 'Insert'"                
     },
+    {
+        "key": "ctrl-m",
+        "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "-workbench.action.lastEditorInGroup"
+    }
 ]

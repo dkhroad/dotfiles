@@ -55,7 +55,13 @@
             "commands": [
                 { "command": "workbench.action.toggleMaximizedPanel" }
             ]
-        }
+        },
+        // {
+        //     "before": [":"],
+        //     "commands": [
+        //         "workbench.action.showCommands",
+        //     ]
+        // }
 
     ],
     "vim.leader": "\\",
@@ -63,8 +69,23 @@
         "<C-b>": true,
         "<C-f>": true
     },
+    "vim.statusBarColorControl": false,
+    // "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
+    "vim.statusBarColors.insert": "#F1C40F",
+    "vim.statusBarColors.visual": "#B48EAD",
+    "vim.statusBarColors.visualline": "#B48EAD",
+    "vim.statusBarColors.visualblock": "#A3BE8C",
+    "vim.statusBarColors.replace": "#D08770",
     "workbench.colorTheme": "RailsCasts",
-    "python.jediEnabled": false,
-    "window.zoomLevel": 1,
-    "python.pythonPath": "~/.venv/python3/bin/python"
+    "python.jediEnabled": true,
+    "window.zoomLevel": 0,
+    "python.pythonPath": "~/.venv/python3/bin/python",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/bin/nvim"
+    
 }
