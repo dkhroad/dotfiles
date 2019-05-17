@@ -15,6 +15,7 @@ filetype off                  " required
 
 let g:python3_host_prog="/Users/dkhroad/.venv/neovim/bin/python"
 " let g:mapleader=','
+let g:airline#extensions#tabline#enabled = 1
 
 " Plugin configuration {{{1
 
