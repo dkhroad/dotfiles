@@ -124,3 +124,5 @@ fi
 if [[ -n "$VIRTUAL_ENV" ]]; then
   source $VIRTUAL_ENV/bin/activate
 fi
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
