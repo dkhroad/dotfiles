@@ -14,13 +14,14 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 let g:python3_host_prog="/Users/dkhroad/.venv/neovim/bin/python"
-" let g:mapleader=','
+" let g:mapleader="'"
 let g:airline#extensions#tabline#enabled = 1
 
 " Plugin configuration {{{1
 
 " vim-gutentags {{{2
   let g:gutentags_cache_dir= '~/.tags_cache'
+  let g:gutentags_dont_load=1
 
 " Colorscheme  {{{2
 if has('nvim')
@@ -57,6 +58,32 @@ endif
 map <leader>b :Buffers<CR>
 map <leader>f :Files<CR>
 
+" Limelight {{{2 
+let g:limelight_conceal_ctermfg = 'Gray'
+let g:limelight_conceal_guicfg = 'Gray'
+" let g:limelight_default_coefficient = 0.1
+
+" Goyo {{{2
+let g:goyo_linenr=0
+let g:goyo_width=90
+function! s:goyo_enter() 
+  call s:disable_autonumber()
+  " set nonumber
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  call s:enable_autonumber()
+  set number relativenumber
+  Limelight!
+endfunction
+
+augroup rn_distraction_free
+  au!
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
+
 " vimtest {{{2
 :let test#strategy='vtr'
 nmap <silent> <leader>t :TestNearest<CR>
@@ -73,9 +100,9 @@ let g:VtrStripLeadingWhitespace = 0
 let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
 
-nnoremap <leader>irb :VtrOpenRunner {'orientation': 'v', 'percentage': 25, 'cmd': 'irb'}<cr>
-nnoremap <leader>pyt :VtrOpenRunner {'orientation': 'v', 'percentage': 25, 'cmd': 'python'}<cr>
-nnoremap <leader>ie :VtrOpenRunner {'orientation': 'v', 'percentage': 25, 'cmd': 'iex'}<cr>
+" nnoremap <leader>irb :VtrOpenRunner {'orientation': 'v', 'percentage': 25, 'cmd': 'irb'}<cr>
+" nnoremap <leader>pyt :VtrOpenRunner {'orientation': 'v', 'percentage': 25, 'cmd': 'python'}<cr>
+" nnoremap <leader>ie :VtrOpenRunner {'orientation': 'v', 'percentage': 25, 'cmd': 'iex'}<cr>
 
 " netrw.vim {{{2
 let g:netrw_banner=0
@@ -272,24 +299,27 @@ map <C-l> <C-w>l
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set global relativenumber {{{2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd WinEnter * :setlocal relativenumber
-autocmd WinLeave,FocusLost * :setlocal number
-autocmd InsertEnter * :setlocal number
-autocmd InsertLeave * :setlocal relativenumber
+" autocmd WinEnter * :setlocal relativenumber
+" autocmd WinLeave,FocusLost * :setlocal number
+" autocmd InsertEnter * :setlocal number
+" autocmd InsertLeave * :setlocal relativenumber
+" set number relativenumber
 
-function! g:ToggleNuMode()
-  if(&relativenumber == 1)
-    " set number
-    set nornu
-  else
-    set relativenumber
-  endif
-endfunc
-set relativenumber "default line number mode
-map <leader>ln :call g:ToggleNuMode()<CR>
+function! s:disable_autonumber()
+  au! numbertoggle
+endfunction
 
-nnoremap <leader><leader> <c-^>
-inoremap <leader>e <Esc> 
+function! s:enable_autonumber()
+  augroup numbertoggle
+   au!
+   au BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu | endif 
+   au BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+  augroup END
+endfunction
+
+call s:enable_autonumber()
+
+
 " inoremap ;d <Esc>:update<Cr>
 " inoremap ;f <C-O>:update<Cr>
 " nnoremap ;f :update<CR>
@@ -390,6 +420,26 @@ autocmd Filetype go nmap <Leader>d <Plug>(go-describe)
 
 " Cython support for vim taglist {{{2
 let tlist_pyrex_settings='python;c:classe;m:memder;f:function'
+
+" Vscode {{{2 
+nnoremap <leader>ov :exe ':silent !code %'<CR>:redraw!<CR>
+
+" Syntastic {{{2
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Markdown preview {{{2
+let g:mkdp_auto_open = 0
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1 
+let g:mkdp_refresh_slow = 1
+
 
 " switch on local spelling {{{2
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us

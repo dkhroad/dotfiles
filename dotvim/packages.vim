@@ -6,7 +6,7 @@ if !exists('*minpac#init')
   finish
 endif
 
-call minpac#init({'verbose': 1})
+call minpac#init({'verbose': 2})
 
 " minpac must have {'type': 'opt'} so that it can be loaded with
 " `packadd`.
@@ -53,6 +53,7 @@ if has('nvim')
   " call minpac#add('ternjs/tern_for_vim')
 endif
 call minpac#add('sheerun/vim-polyglot')
+call minpac#add('vim-syntastic/syntastic')
 call minpac#add('janko-m/vim-test')
 call minpac#add('vim-scripts/taglist.vim')
 call minpac#add('ludovicchabant/vim-gutentags')
@@ -72,6 +73,7 @@ call minpac#add('saihoooooooo/vim-textobj-space')
 call minpac#add('christoomey/vim-tmux-runner')
 call minpac#add('christoomey/vim-tmux-navigator')
 call minpac#add('easymotion/vim-easymotion')
+call minpac#add('justinmk/vim-sneak')
 call minpac#add('junegunn/fzf.vim')
 call minpac#add('junegunn/fzf')
 call minpac#add('powerman/vim-plugin-AnsiEsc')
@@ -83,8 +85,11 @@ call minpac#add('nelstrom/vim-docopen')
 
 " Markdown
 call minpac#add('tpope/vim-markdown')
+call minpac#add('iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } })
 " call minpac#add('nelstrom/vim-markdown-folding')
 call minpac#add('junegunn/vim-emoji', {'type': 'opt'})
+call minpac#add('junegunn/goyo.vim')
+call minpac#add('junegunn/limelight.vim')
 
 " JavaScript
 call minpac#add('pangloss/vim-javascript')
@@ -99,7 +104,7 @@ call minpac#add('vim-ruby/vim-ruby')
 
 " Go
 call minpac#add('fatih/vim-go')
-call minpac#add('garyburd/go-explorer')
+" call minpac#add('garyburd/go-explorer')
 
 " Elixir
 call minpac#add('elixir-lang/vim-elixir')
