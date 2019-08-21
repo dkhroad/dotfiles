@@ -55,6 +55,7 @@ endif
 call minpac#add('sheerun/vim-polyglot')
 call minpac#add('vim-syntastic/syntastic')
 call minpac#add('janko-m/vim-test')
+call minpac#add('grohiro/vim-test-truffle')
 call minpac#add('vim-scripts/taglist.vim')
 call minpac#add('ludovicchabant/vim-gutentags')
 

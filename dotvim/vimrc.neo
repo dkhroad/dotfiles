@@ -85,7 +85,8 @@ augroup rn_distraction_free
 augroup END
 
 " vimtest {{{2
-:let test#strategy='vtr'
+let test#custom_runners = {'Solidity': ['Truffle']}
+let test#strategy='vtr'
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
@@ -166,6 +167,7 @@ map <leader>n :NERDTreeFind<cr>
 let vim_markdown_preview_toggle=1 "display images
 let vim_markdown_preview_github=1 "use grip 
 let vim_markdown_preview_hotkey='<leader>`'
+au BufRead,BufNewFile *.md setlocal textwidth=100
 
 " CtrlP {{{2
 let g:ctrlp_working_path_mode = 'ra'
@@ -183,6 +185,8 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+
 
 " The Silver Searcher {{{2
 if executable('ag')
@@ -430,9 +434,20 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0 "hide the location list by default
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "\u2717"
+let g:syntastic_style_error_symbol = "\u2717"
+let g:syntastic_warning_symbol = "\u26A0"
+let g:syntastic_style_warning = "\u26A0"
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_solidity_checkers = ['solhint']
+
+
+
+
 
 " Markdown preview {{{2
 let g:mkdp_auto_open = 0
@@ -454,3 +469,21 @@ endif
 
 
 highlight Pmenu ctermbg=gray guibg=bold
+
+" if exists("current_compiler")
+"   finish
+" endif
+
+function! SetCompilerForSolidity()
+  augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost make nested copen
+  augroup END
+  let current_compiler = "solc"
+  setlocal makeprg=truffle\ compile\ $*
+  setlocal errorformat=\\,%f:%l:%c:\ %m,
+                    \Error\ parsing\ %f:\ %.%#:%l:%c:\ %m,
+                    \%f:%l:%c:\ %m,
+endfunction
+
+autocmd Filetype solidity  call SetCompilerForSolidity()
