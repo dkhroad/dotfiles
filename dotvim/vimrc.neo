@@ -1,5 +1,5 @@
 " vim: nowrap fdm=marker
-scriptencoding utf-9
+scriptencoding utf-8
 
 if !has('nvim')
   unlet! skip_defaults_vim
@@ -12,6 +12,7 @@ source ~/dotfiles/dotvim/packages.vim
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
 
 let g:python3_host_prog="/Users/dkhroad/.venv/neovim/bin/python"
 " let g:mapleader="'"
@@ -26,6 +27,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Colorscheme  {{{2
 if has('nvim')
   set termguicolors
+  set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,r-cr:hor20,o:hor50
 endif
 set background=dark
 colorscheme solarized8
@@ -46,17 +48,18 @@ nmap <leader>+ :<c-u>call Solarized8Contrast(+v:count1)<cr>
 
 " Terminal mode config {{{2
 if has('nvim') 
-  tnoremap <A-[> <Esc>
-  tnoremap <expr> <A-r> '<C-\><C-n>"'.nr2char(getchar()).'pi'
-  tnoremap <a-h> <c-\><c-n><c-w>h
-  tnoremap <a-j> <c-\><c-n><c-w>j
-  tnoremap <a-k> <c-\><c-n><c-w>k
-  tnoremap <a-l> <c-\><c-n><c-w>
+  " tnoremap <A-[> <Esc>
+  " tnoremap <expr> <A-r> '<C-\><C-n>"'.nr2char(getchar()).'pi'
+  " tnoremap <a-h> <c-\><c-n><c-w>h
+  " tnoremap <a-j> <c-\><c-n><c-w>j
+  " tnoremap <a-k> <c-\><c-n><c-w>k
+  " tnoremap <a-l> <c-\><c-n><c-w>
 endif
 
 " Files & buffers {{{2
 map <leader>b :Buffers<CR>
-map <leader>f :Files<CR>
+map <leader><space> :Files<CR>
+" map <leader>h :History<CR>
 
 " Limelight {{{2 
 let g:limelight_conceal_ctermfg = 'Gray'
@@ -84,15 +87,44 @@ augroup rn_distraction_free
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
 
+" neoterm {{{2
+if has('nvim')
+  " tnoremap <Esc> <C-\><C-n>
+  " tnoremap <M-[> <Esc>
+  " tnoremap <C-v><Esc> <Esc>
+  "Terminal mode:
+  tnoremap <M-h> <c-\><c-n><c-w>h
+  tnoremap <M-j> <c-\><c-n><c-w>j
+  tnoremap <M-k> <c-\><c-n><c-w>k
+  tnoremap <M-l> <c-\><c-n><c-w>l
+  "Insert mode:
+  inoremap <M-h> <Esc><c-w>h
+  inoremap <M-j> <Esc><c-w>j
+  inoremap <M-k> <Esc><c-w>k
+  inoremap <M-l> <Esc><c-w>l
+  " Visual mode:
+  vnoremap <M-h> <Esc><c-w>h
+  vnoremap <M-j> <Esc><c-w>j
+  vnoremap <M-k> <Esc><c-w>k
+  vnoremap <M-l> <Esc><c-w>l
+  " Normal mode:
+  nnoremap <M-h> <c-w>h
+  nnoremap <M-j> <c-w>j
+  nnoremap <M-k> <c-w>k
+  nnoremap <M-l> <c-w>l
+endif
+
 " vimtest {{{2
 let test#custom_runners = {'Solidity': ['Truffle']}
 let test#strategy='vtr'
+let g:test#solidity#truffle#file_pattern= '\v[Tt]est.*\.(sol|js)$'
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 let test#python#runner='pyunit'
+let test#javascript#jest#options = ' --runInBand --detectOpenHandles'
 
 " vtr {{{2  
 let g:VtrUseVtrMaps = 1
@@ -100,6 +132,8 @@ let g:VtrUseVtrMaps = 1
 let g:VtrStripLeadingWhitespace = 0
 let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
+nnoremap <leader><leader> :VtrFocusRunner<cr>
+nnoremap <leader>ar :VtrAttachToPane<cr>
 
 " nnoremap <leader>irb :VtrOpenRunner {'orientation': 'v', 'percentage': 25, 'cmd': 'irb'}<cr>
 " nnoremap <leader>pyt :VtrOpenRunner {'orientation': 'v', 'percentage': 25, 'cmd': 'python'}<cr>
@@ -194,8 +228,8 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
 endif
-map <leader>A :Ag!<space>
-map <leader>a :Ag! <C-R><C-W><CR>
+map <leader>r :Rg<space>
+map <leader>f :Rg <C-R><C-W><CR>
 
 " Use ag for search, it's much faster than ack.
 " See https://github.com/ggreer/the_silver_searcher
@@ -266,7 +300,7 @@ set title
  map <leader>tl :tablast<cr>
  map <leader>tm :tabmove
 
-map <CR> :noh<CR>
+nnoremap <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ":noh<CR>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily {{{2
@@ -413,7 +447,12 @@ autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0,'split')
 autocmd Filetype go nmap <Leader>d <Plug>(go-describe)
 
 " Easy motion {{{2
-"
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+nmap <space> <Plug>(easymotion-overwin-f) 
 
 " Enable omni completion. {{{2
 " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -459,16 +498,9 @@ let g:mkdp_refresh_slow = 1
 " switch on local spelling {{{2
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 set complete+=kspell
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LAST SECTION
-" Include user's local vim config {{{2
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
 
 
-highlight Pmenu ctermbg=gray guibg=bold
+highlight Pmenu ctermbg=gray guibg=gray
 
 " if exists("current_compiler")
 "   finish
@@ -487,3 +519,20 @@ function! SetCompilerForSolidity()
 endfunction
 
 autocmd Filetype solidity  call SetCompilerForSolidity()
+
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LAST SECTION
+" Include user's local vim config {{{2
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vimrc.local"))
+ source ~/.vimrc.local
+endif

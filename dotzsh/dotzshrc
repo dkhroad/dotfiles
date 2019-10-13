@@ -57,7 +57,8 @@ source $HOME/.bash_profile_includes/aws.sh
 source $HOME/.bash_profile_includes/rbenv.sh
 source $HOME/.bash_profile_includes/code.sh
 source $HOME/.bash_profile_includes/nvm.sh
-source $HOME/.bash_profile_includes/hyperledger.sh
+source $HOME/.bash_profile_includes/fzf.sh
+# source $HOME/.bash_profile_includes/hyperledger.sh
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
@@ -119,7 +120,9 @@ if [ -f '/Users/dkhroad/google-cloud-sdk/completion.zsh.inc' ]; then source '/Us
 
 # zprof
 if [[ -n "$TMUX" ]]; then
+  if [[ -n "$VIRTUAL_ENV" ]]; then
     tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
+  fi
 fi
 if [[ -n "$VIRTUAL_ENV" ]]; then
   source $VIRTUAL_ENV/bin/activate
