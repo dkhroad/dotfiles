@@ -1,4 +1,4 @@
-alias d='docker'
+alias dkr='docker'
 alias drmi='docker images --no-trunc| grep none | awk '{print $3}' | xargs  docker rmi -f'
 alias dke='docker ps -a --no-trunc | grep 'Exit' | awk '{print $1}' | xargs  docker rm'
 alias dka='docker ps -a --no-trunc | awk '{print $1}' | xargs  docker rm'

@@ -90,6 +90,7 @@ call minpac#add('nelstrom/vim-docopen')
 call minpac#add('tpope/vim-markdown')
 call minpac#add('iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } })
 " call minpac#add('nelstrom/vim-markdown-folding')
+cal minpac#add('plasticboy/vim-markdown')
 call minpac#add('junegunn/vim-emoji', {'type': 'opt'})
 call minpac#add('junegunn/goyo.vim')
 call minpac#add('junegunn/limelight.vim')
@@ -104,6 +105,9 @@ call minpac#add('tpope/vim-bundler')
 call minpac#add('tpope/vim-rails')
 call minpac#add('tpope/vim-rake')
 call minpac#add('vim-ruby/vim-ruby')
+
+" Rust 
+call minpac#add('rust-lang/rust.vim')
 
 " Go
 call minpac#add('fatih/vim-go')

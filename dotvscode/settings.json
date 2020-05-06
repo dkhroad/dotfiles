@@ -77,7 +77,7 @@
     "vim.statusBarColors.visualblock": "#A3BE8C",
     "vim.statusBarColors.replace": "#D08770",
     "workbench.colorTheme": "RailsCasts",
-    "python.jediEnabled": true,
+    "python.jediEnabled": false,
     "window.zoomLevel": 0,
     "python.pythonPath": "~/.venv/python3/bin/python",
     "workbench.colorCustomizations": {
@@ -86,6 +86,8 @@
         "statusBar.debuggingBackground": "#005f5f"
     },
     "vim.enableNeovim": true,
-    "vim.neovimPath": "/usr/local/bin/nvim"
+    "vim.neovimPath": "/usr/local/bin/nvim",
+    "explorer.openEditors.visible": 0,
+    "workbench.tree.indent": 20
     
 }
