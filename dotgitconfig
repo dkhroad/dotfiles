@@ -66,7 +66,7 @@
   excludesfile = /Users/dkhroad/.gitignore
   #gitproxy = gitproxy
 	autocrlf = input
-	editor = vim
+	editor = nvim
 	pager = less -FXRS -x2
 [push]
   #only push branches that have been set up to tracka remote branch
@@ -75,12 +75,16 @@
   submodule=1
 [help]
   autocorrect=1
-[mergetool "nvim"]
-	cmd = nvim -f -c \"Gdiffsplit!\" -w \"$MERGED\"
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [merge]
-	tool = nvim
+	tool = vimdiff
+[difftool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE
 [diff]
 	tool = vimdiff
+[difftool]
+	prompt = false
 [diff "tool.diffmerge"]
 	cmd = diffmerge $LOCAL $REMOTE
 [diff "tool.fmmerge"]
