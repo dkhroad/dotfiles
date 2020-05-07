@@ -75,11 +75,10 @@
   submodule=1
 [help]
   autocorrect=1
-[mergetool "sublime"]
-	cmd = subl -w $MERGED
-	trustExitCode = false
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiffsplit!\" -w \"$MERGED\"
 [merge]
-	tool = sublime
+	tool = nvim
 [diff]
 	tool = vimdiff
 [diff "tool.diffmerge"]
