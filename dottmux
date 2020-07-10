@@ -150,5 +150,5 @@ bind C-s set-window-option synchronize-panes
 set-option -g allow-rename off
 
 # os specific iniitalization
-if-shell "uname | grep -q Darwin" "source-file .tmux.osx" "source-file .tmux.linux"
+if-shell "uname | grep -q Darwin" "source-file ~/.tmux.osx" "source-file ~/.tmux.linux"
 

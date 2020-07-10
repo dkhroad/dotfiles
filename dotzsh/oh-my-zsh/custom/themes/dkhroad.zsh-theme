@@ -23,20 +23,20 @@ PROMPT_VCS_INFO_COLOR=$FG[242]
 setopt promptsubst
 
 # Load required modules.
-autoload -U add-zsh-hook
-autoload -Uz vcs_info
+# autoload -U add-zsh-hook
+# autoload -Uz vcs_info
 
 # Add hook for calling vcs_info before each command.
-add-zsh-hook precmd vcs_info
+# add-zsh-hook precmd vcs_info
 
 # Set vcs_info parameters.
-zstyle ':vcs_info:*' enable hg bzr git
-zstyle ':vcs_info:*:*' check-for-changes true # Can be slow on big repos.
-zstyle ':vcs_info:*:*' unstagedstr '!'
-zstyle ':vcs_info:*:*' stagedstr '+'
-zstyle ':vcs_info:*:*' actionformats "%S" "%s(%b)%u%c (%a)"
-zstyle ':vcs_info:*:*' formats "%S" "%s(%b)%u%c"
-zstyle ':vcs_info:*:*' nvcsformats "%~" ""
+# zstyle ':vcs_info:*' enable git
+# zstyle ':vcs_info:*:*' check-for-changes true # Can be slow on big repos.
+# zstyle ':vcs_info:*:*' unstagedstr '!'
+# zstyle ':vcs_info:*:*' stagedstr '+'
+# zstyle ':vcs_info:*:*' actionformats "%S" "%s(%b)%u%c (%a)"
+# zstyle ':vcs_info:*:*' formats "%S" "%s(%b)%u%c"
+# zstyle ':vcs_info:*:*' nvcsformats "%~" ""
 
 prompt_proxy() {
     [[ -n $http_proxy ]] && echo -n "%{%F{cyan}%}⚙"
@@ -44,4 +44,4 @@ prompt_proxy() {
 
 # Define prompts.
 PROMPT="%(0?.%{$PROMPT_SUCCESS_COLOR%}.%{$PROMPT_FAILURE_COLOR%})${SSH_TTY:+[%n@%m]}%{$FX[bold]%}%$PROMPT_PATH_MAX_LENGTH<..<"'${vcs_info_msg_0_%%.}'"%<<%(!.$PROMPT_ROOT_END.$PROMPT_DEFAULT_END)%{$FX[no-bold]%}%{$FX[reset]%} "
-RPROMPT="%{$PROMPT_VCS_INFO_COLOR%}"'$vcs_info_msg_1_ $(rvm_prompt_info) $(prompt_proxy)'"%{$FX[reset]%}"
+#RPROMPT="%{$PROMPT_VCS_INFO_COLOR%}"'$vcs_info_msg_1_ $(rvm_prompt_info) $(prompt_proxy)'"%{$FX[reset]%}"
