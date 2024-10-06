@@ -1,0 +1,31 @@
+[general]
+import = [
+    # "~/.config/alacritty/themes/themes/coolnight.toml"
+    # "~/.config/alacritty/themes/themes/gruvbox_dark.toml"
+    # "~/.config/alacritty/themes/themes/solarized_light.toml"
+    "~/.config/alacritty/themes/themes/solarized_dark.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+
+[window]
+padding.x = 10
+padding.y = 10
+dynamic_padding = true
+
+decorations = "none"
+# dynamic_title = true
+
+opacity = 1.0
+blur = false
+
+option_as_alt = "Both"
+
+[font]
+# normal.family = "MesloLGS Nerd Font Mono"
+# normal.family = "VictorMono Nerd Font Mono"
+normal.family = "UbuntuMono Nerd Font Mono"
+
+size = 10

@@ -1,0 +1,21 @@
+# use fzf to cd
+fzf_cd() {
+    local selected_dir
+    local search_dir="${1:-$HOME}"  # Use $HOME if no argument is provided
+    local show_hidden=false
+    local fd_opts=()
+
+    # Check if -H option is provided
+    if [[ "$1" == "-H" || "$2" == "-H" ]]; then
+        show_hidden=true
+        fd_opts+=(-H)
+        # If -H is the first argument, shift the search_dir
+        [[ "$1" == "-H" ]] && search_dir="${2:-$HOME}"
+    fi
+
+    selected_dir=$(fd -t d "${fd_opts[@]}" . "$search_dir" | fzf +m --height 50%  --preview 'tree -C {}')
+    if [[ -n "$selected_dir" ]]; then
+        # Change to the selected directory
+        cd "$selected_dir" || return 1
+    fi
+}
