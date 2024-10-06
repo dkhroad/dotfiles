@@ -5,8 +5,7 @@
 # to paste primary clipboard in tmux: shift+ rt click
 
 bind Escape copy-mode
-unbind p
 bind-key -T copy-mode-vi v send -X begin-selection
-bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel '/c/windows/System32/clip.exe'
-#bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+bind-key -T copy-mode-vi Enter send -X copy-pipe-and-cancel '~/bin/pbcopy_remote'
 

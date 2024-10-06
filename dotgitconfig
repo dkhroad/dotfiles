@@ -17,7 +17,6 @@
   added = yellow
   changed = green
   untracked = red
-[user]
 [alias]
   ctags = !.git/hooks/ctags
   st = status
@@ -63,7 +62,7 @@
 [branch]
 	autosetupmerge = true
 [core]
-  excludesfile = /Users/dkhroad/.gitignore
+  excludesfile = /home/dkhroad/.gitignore
   #gitproxy = gitproxy
 	autocrlf = input
 	editor = nvim
@@ -90,10 +89,14 @@
 [diff "tool.fmmerge"]
 	cmd = fmmerge $LOCAL $REMOTE
 [init]
-	templatedir = /Users/dkhroad/.git_template
+	templatedir = /home/dkhroad/.git_template
 [rebase]
 	autosquash = true
 [user]
 	name = Devinder Khroad
 	initials = dk
-	email = dkhroad@gmail.com
+	email = dkhroad@logitech.com
+[credential]
+	helper = cache --timeout=3600
+[pull]
+	default = current

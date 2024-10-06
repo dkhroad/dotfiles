@@ -15,8 +15,9 @@ filetype off                  " required
 
 
 let g:python3_host_prog="/Users/dkhroad/.venv/neovim/bin/python"
-" let g:mapleader="'"
+let g:mapleader="'"
 let g:airline#extensions#tabline#enabled = 1
+imap jk <Esc>
 
 " Plugin configuration {{{1
 
@@ -26,7 +27,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Colorscheme  {{{2
 if has('nvim')
-  set termguicolors
+  " set termguicolors
   set guicursor=n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,r-cr:hor20,o:hor50
 endif
 set background=dark
@@ -58,7 +59,7 @@ endif
 
 " Files & buffers {{{2
 map <leader>b :Buffers<CR>
-map <leader><space> :Files<CR>
+map <leader>f :Files<CR>
 " map <leader>h :History<CR>
 
 " Limelight {{{2 
@@ -229,7 +230,7 @@ if executable('ag')
 
 endif
 map <leader>r :Rg<space>
-map <leader>f :Rg <C-R><C-W><CR>
+map <leader>s :Rg <C-R><C-W><CR>
 
 " Use ag for search, it's much faster than ack.
 " See https://github.com/ggreer/the_silver_searcher
@@ -243,7 +244,7 @@ syntax on                         " Turn on syntax highlighing.
 filetype plugin indent on         " Turn on file type detection.
 
 runtime macros/matchit.vim        " Load the matchit plugin.
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 set t_Co=256                      " 256 color support
 
 set showcmd                       " Display incomplete commands.
@@ -329,10 +330,10 @@ set undoreload=10000
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Easy Window Navigation {{{2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" map <C-h> <C-w>h
+" map <C-j> <C-w>j
+" map <C-k> <C-w>k
+" map <C-l> <C-w>l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set global relativenumber {{{2
@@ -420,7 +421,7 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader><leader>b :<C-u>call <SID>build_go_files()<CR>
 
 let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1

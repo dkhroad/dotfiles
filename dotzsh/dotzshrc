@@ -7,9 +7,9 @@ fi
 
 
 
-fpath+=${ZDOTDIR:-~}/.zsh_functions
+fpath+=${ZDOTDIR:-~}/.zsh/zsh_functions
+autoload -Uz fzf_cd
 
-# history setup 
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
@@ -24,9 +24,13 @@ unsetopt correct
 
 ulimit -S -n 1024
 
+
 source ~/.zsh/exports.zsh
+
+eval "$(zoxide init zsh)"
+
 source ~/.zsh/keybindings.zsh
-source ~/.zsh/functions.zsh
+source ~/.zsh/aliases.zsh
 
 
 
@@ -57,8 +61,6 @@ if [ -f '/Users/dkhroad/google-cloud-sdk/completion.zsh.inc' ]; then
   source '/Users/dkhroad/google-cloud-sdk/completion.zsh.inc';
 fi
 
-# brew path
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # zprof
 if [[ -n "$TMUX" ]]; then
@@ -85,11 +87,9 @@ source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /home/dkhroad/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-bindkey '^ ' autosuggest-accept
-
-
+# bindkey '^ ' autosuggest-accept
 . "$HOME/.cargo/env"
 
 
