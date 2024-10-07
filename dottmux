@@ -42,6 +42,8 @@ bind K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-messa
 bind-key a command-prompt -p "join pane from: " "join-pane -v -s '%%'"
 bind-key s display-panes\; command-prompt -p "pane #: " "swap-pane -t '%%'"
 
+bind-key -n C-S-Left swap-window -t -1\; select-window -t -1
+bind-key -n C-S-Right swap-window -t +1\; select-window -t +1
 
 bind-key t split-window -h "htop"
 
@@ -102,7 +104,7 @@ set -g status-bg black
 # setw -g window-status-bg default 
 # setw -g window-status-attr dim
 
-setw -g window-status-style fg=cyan,bg=default,dim
+setw -g window-status-style fg=cyan,bg=default
 
 # set colors for the active window
 # setw -g window-status-current-fg white 

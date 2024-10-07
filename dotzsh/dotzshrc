@@ -14,10 +14,19 @@ ZSH_THEME="dkhroad"
 #ZSH_THEME="nicoulaj"
 #ZSH_THEME="juanghurtado"
 
+# Directory stacks
+DIRSTACKSIZE=8
+setopt autopushd pushdminus pushdsilent pushdtohome
+alias dv="dirs -v"
+alias t=todo.sh
 # Example aliases
 alias rake="noglob rake"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias mfac="ykman oath accounts code -s"
+alias mfal="ykman oath accounts list"
+alias mfaa="ykman oath accounts add -t"
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 setopt AUTO_CD
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -130,8 +139,22 @@ if [[ -n "$VIRTUAL_ENV" ]]; then
   source $VIRTUAL_ENV/bin/activate
 fi
 
+[ -f /usr/local/etc/autojump.sh ] && source /usr/local/etc/autojump.sh
+
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 if [[ -f ~/.acme.sh ]]; then
   . "/Users/dkhroad/.acme.sh/acme.sh.env"
 fi
+
+# added by Snowflake SnowSQL installer v1.2
+export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+
+# Created by `pipx` on 2024-08-01 19:09:07
+#export PATH="$PATH:/Users/dkhroad/.local/bin"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

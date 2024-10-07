@@ -91,9 +91,17 @@
 	cmd = fmmerge $LOCAL $REMOTE
 [init]
 	templatedir = /Users/dkhroad/.git_template
+	defaultBranch = master
 [rebase]
 	autosquash = true
 [user]
 	name = Devinder Khroad
 	initials = dk
-	email = dkhroad@gmail.com
+  email = dkhroad@logitech.com
+[submodule]
+	recurse = true
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = dkhroad@logitech.com
