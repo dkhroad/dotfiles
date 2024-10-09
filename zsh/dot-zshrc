@@ -6,11 +6,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
+# exec 2>>/tmp/zsh_startup.log 
+# set -x
 
 fpath+=${ZDOTDIR:-~}/.zsh/zsh_functions
-autoload -Uz fzf_cd
-autoload  Uz compinit
-compinit
+
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
@@ -40,7 +40,6 @@ eval "$(zoxide init zsh)"
 source ~/.zsh/keybindings.zsh
 source ~/.zsh/aliases.zsh
 # Set up fzf key bindings and fuzzy completion
-source ~/.zsh/fzf.zsh
 
 
 source $HOME/.bash_profile_includes/cdr.sh
@@ -81,7 +80,7 @@ if [[ -n "$VIRTUAL_ENV" ]]; then
   source $VIRTUAL_ENV/bin/activate
 fi
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 if [[ -f ~/.acme.sh ]]; then
   . "/Users/dkhroad/.acme.sh/acme.sh.env"
 fi
@@ -90,6 +89,7 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.zsh/fzf.zsh
 # source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -97,10 +97,19 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.zsh/completions.zsh
-# source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /home/dkhroad/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# bindkey '^ ' autosuggest-accept
-[[ ! -f $HOME/.cargo/env ]] || source "$HOME/.cargo/env"
 
+if [[ "$(uname)" == "Linux" ]] && [[ "$(lsb_release -si 2>/dev/null)" == "Ubuntu" ]]; then
+    # Ubuntu-specific configuration
+    source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    # source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    # bindkey '^ ' autosuggest-accept
+    [[ ! -f $HOME/.cargo/env ]] || source "$HOME/.cargo/env"
+elif [[ "$(uname)" == "Darwin" ]]; then
+    # macOS (OSX) specific configuration
+    source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+    echo "Unsupported operating system for this zsh-syntax-highlighting configuration."
+fi
 
+# set +x 
+# exec 2>&1

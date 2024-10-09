@@ -16,6 +16,7 @@ bindkey -M menuselect '^xn' accept-and-infer-next-history  # Next
 bindkey -M menuselect '^xu' undo                           # Undo
 
 autoload -U compinit; compinit
+autoload -Uz fzf_cd
 _comp_options+=(globdots) # With hidden files
 
 
