@@ -10,3 +10,8 @@ tags
 tmux/dot-tmux/plugins/*
 !tmux/dot-tmux/plugins/.gitkeep
 config/dot-config/alacritty/themes/
+
+zsh/dot-zsh/plugins
+!zsh/dot-zsh/plugins/.gitkeep
+
+config/dot-config/nvim/lazy-lock.json

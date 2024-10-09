@@ -9,14 +9,20 @@ fi
 
 fpath+=${ZDOTDIR:-~}/.zsh/zsh_functions
 autoload -Uz fzf_cd
-
+autoload  Uz compinit
+compinit
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
+
+setopt extended_history
 setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_save_no_dups
 setopt hist_verify
 setopt AUTO_CD
 
@@ -25,13 +31,16 @@ unsetopt correct
 ulimit -S -n 1024
 
 
+
+
 source ~/.zsh/exports.zsh
 
 eval "$(zoxide init zsh)"
 
 source ~/.zsh/keybindings.zsh
 source ~/.zsh/aliases.zsh
-
+# Set up fzf key bindings and fuzzy completion
+source ~/.zsh/fzf.zsh
 
 
 source $HOME/.bash_profile_includes/cdr.sh
@@ -46,7 +55,7 @@ source $HOME/.bash_profile_includes/go.sh
 source $HOME/.bash_profile_includes/aws.sh
 #source $HOME/.bash_profile_includes/rbenv.sh
 source $HOME/.bash_profile_includes/code.sh
-source $HOME/.bash_profile_includes/nvm.sh
+# source $HOME/.bash_profile_includes/nvm.sh
 source $HOME/.bash_profile_includes/fzf.sh
 
 # source $HOME/.bash_profile_includes/hyperledger.sh
@@ -81,15 +90,17 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
+source ~/.zsh/completions.zsh
 # source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /home/dkhroad/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /home/dkhroad/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # bindkey '^ ' autosuggest-accept
-. "$HOME/.cargo/env"
+[[ ! -f $HOME/.cargo/env ]] || source "$HOME/.cargo/env"
 
 
