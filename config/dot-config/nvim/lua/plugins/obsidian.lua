@@ -34,7 +34,7 @@ return {
     daily_notes = {
       folder = "notes/dailies",
       date_format = "%Y-%m-%d",
-      alias_format = "%B %-d, Y",
+      alias_format = "%B %-d, %Y",
       default_tags = { "daily_notes" },
       template = nil,
     },
