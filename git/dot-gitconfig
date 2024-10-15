@@ -95,7 +95,7 @@
 [user]
 	name = Devinder Khroad
 	initials = dk
-	email = dkhroad@logitech.com
+	email = dkhroad@gmail.com
 [credential]
 	helper = cache --timeout=3600
 [pull]
