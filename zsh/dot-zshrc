@@ -85,8 +85,6 @@ if [[ -f ~/.acme.sh ]]; then
   . "/Users/dkhroad/.acme.sh/acme.sh.env"
 fi
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/terraform terraform
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.zsh/fzf.zsh
@@ -97,6 +95,8 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.zsh/completions.zsh
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
 
 if [[ "$(uname)" == "Linux" ]] && [[ "$(lsb_release -si 2>/dev/null)" == "Ubuntu" ]]; then
     # Ubuntu-specific configuration
