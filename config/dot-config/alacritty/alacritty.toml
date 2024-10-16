@@ -1,4 +1,3 @@
-# [general]
 import = [
     # "~/.config/alacritty/themes/themes/coolnight.toml"
     # "~/.config/alacritty/themes/themes/gruvbox_dark.toml"
