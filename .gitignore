@@ -7,11 +7,6 @@
 sublime_text2_user_settings/Package Control.last-run
 sublime_text2_user_settings/RubyTest.last-run
 tags
-tmux/dot-tmux/plugins/*
-!tmux/dot-tmux/plugins/.gitkeep
-config/dot-config/alacritty/themes/
 
-zsh/dot-zsh/plugins
-!zsh/dot-zsh/plugins/.gitkeep
 
 config/dot-config/nvim/lazy-lock.json

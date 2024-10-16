@@ -29,6 +29,6 @@ option_as_alt = "Both"
 # normal.family = "MesloLGS Nerd Font Mono"
 # normal.family = "VictorMono Nerd Font Mono"
 # normal.family = "UbuntuMono Nerd Font Mono"
-normal.family = "DroidSansMono Nerd Font"
+# normal.family = "DroidSansMono Nerd Font"
 
 size = 14
