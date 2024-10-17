@@ -4,6 +4,7 @@ return {
     opts = {
       -- colorscheme = "gruvbox",
       colorscheme = "solarized",
+      termguicolors = true,
     },
   },
 }

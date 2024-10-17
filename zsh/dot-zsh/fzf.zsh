@@ -1,4 +1,10 @@
 
+if [[ -d ~/.fzf/bin ]]; then
+  if [[ ! "$PATH" == */home/dkhroad/.fzf/bin* ]]; then
+    PATH="${PATH:+${PATH}:}/home/dkhroad/.fzf/bin"
+  fi
+fi
+
 source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_COMPLETION_OPTS='--border --info=inline'
@@ -29,3 +35,4 @@ _fzf_comprun() {
     *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
   esac
 }
+
