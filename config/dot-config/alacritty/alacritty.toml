@@ -1,10 +1,5 @@
 import = [
-    # "~/.config/alacritty/themes/themes/coolnight.toml"
-    # "~/.config/alacritty/themes/themes/gruvbox_dark.toml"
-    # "~/.config/alacritty/themes/themes/solarized_light.toml"
-    "~/.config/alacritty/themes/themes/solarized_osaka.toml"
-    # "~/.config/alacritty/themes/themes/nord_light.toml"
-    # "~/.config/alacritty/themes/themes/tokyo-night.toml"
+    "~/.config/alacritty/themes/_active.toml"
 ]
 
 [env]
@@ -25,10 +20,6 @@ blur = true
 option_as_alt = "Both"
 
 [font]
-# normal.family = "MesloLGS Nerd Font Mono"
-# normal.family = "VictorMono Nerd Font Mono"
-#normal.family = "UbuntuMono Nerd Font Mono"
-#normal.family = "EnvyCodeR Nerd Font Mono"
 normal.family = "DroidSansM Nerd Font"
 
 size = 14

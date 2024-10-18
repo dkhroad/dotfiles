@@ -1,6 +1,20 @@
 
 alias ls="ls --color=auto"
-alias cds="fzf_cd"
-alias cdh="fzf_cd -H"
+
+change_nvim_background() {
+  local bg=$1
+  sed -i '' "s/vim.o.background = \"[a-z]*\"/vim.o.background = \"$bg\"/" ~/.config/nvim/lua/config/options.lua
+}
+function dark() {
+  ln -fs ~/.config/alacritty/themes/themes/solarized_osaka.toml ~/.config/alacritty/themes/_active.toml
+  touch ~/.config/alacritty/alacritty.toml
+  change_nvim_background "dark"
+}
+
+function light() {
+  ln -fs ~/.config/alacritty/themes/themes/solarized_light.toml ~/.config/alacritty/themes/_active.toml
+  touch ~/.config/alacritty/alacritty.toml
+  change_nvim_background "light"
+}
 # ---- Zoxide (better cd) ----
 # alias cd="z" # zoxide
