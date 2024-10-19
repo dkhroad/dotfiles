@@ -19,3 +19,5 @@ function light() {
 }
 # ---- Zoxide (better cd) ----
 # alias cd="z" # zoxide
+
+alias ls="eza --icons=always"
