@@ -5,10 +5,10 @@ return {
   ---@type solarized.config
   opts = {},
   config = function(_, opts)
-    vim.o.termguicolors = true
+    -- vim.o.termguicolors = true
     -- vim.o.background = "light"
-    vim.o.background = "dark"
+    -- vim.o.background = "dark"
     require("solarized").setup(opts)
-    vim.cmd.colorscheme("solarized")
+    -- vim.cmd.colorscheme("solarized")
   end,
 }

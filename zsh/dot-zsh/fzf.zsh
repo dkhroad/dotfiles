@@ -8,17 +8,30 @@ fi
 source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_COMPLETION_OPTS='--border --info=inline'
+# Force fzf completion
+#export FZF_COMPLETION_TRIGGER=''
+# Make tab trigger fzf completion
+#export FZF_DEFAULT_OPTS="--bind 'tab:down,btab:up'"
+#export FZF_COMPLETION_DIR_COMMANDS="cd ls tree vim"
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
+    if [ -n "$1" ]; then
+        fd --hidden --follow --exclude ".git" . "$1"
+    else
+        fd --hidden --follow --exclude ".git" .
+    fi
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
+    if [ -n "$1" ]; then
+        fd --type d --hidden --follow --exclude ".git" . "$1"
+    else
+        fd --type d --hidden --follow --exclude ".git" .
+    fi
 }
 
 # Advanced customization of fzf options via _fzf_comprun function
