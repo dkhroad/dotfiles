@@ -1,0 +1,36 @@
+# Add this to your .bashrc or .zshrc
+fif() {
+  # Content of ~/.zsh/functions/fif
+  if [ ! "$#" -gt 0 ]; then
+      echo "Need a string to search for!"
+      return 1
+  fi
+
+  local search_term="$1"
+  local search_dir="."  
+
+  if [ "$#" -gt 1 ]; then
+      search_dir="$2"
+  fi
+
+  # Search with line numbers
+  local selected=$(rg --line-number --no-heading --color=always "$search_term" "$search_dir" | \
+      fzf --ansi \
+          --preview 'bat --style=numbers --color=always $(echo {} | cut -d ":" -f 1)' \
+          --preview-window 'right:60%')
+
+  if [ -n "$selected" ]; then
+      # Extract filename and line number
+      local file=$(echo "$selected" | cut -d ":" -f 1)
+      local line=$(echo "$selected" | cut -d ":" -f 2)
+      
+      # Open in nvim/nvr with cursor at the right line
+      if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+        echo "using nvr"
+          nvr --remote-silent +"$line" "$file"
+      else
+        echo "using nvm"
+          nvim +"$line" "$file"
+      fi
+  fi
+}

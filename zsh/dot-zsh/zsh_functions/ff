@@ -1,0 +1,56 @@
+# Content of ~/.zsh/functions/ff
+# Usage: ff [directory] [pattern]
+
+local search_dir="."
+local pattern=""
+
+# Handle arguments
+if [ "$#" -gt 0 ]; then
+    # If first argument is a directory, use it
+    if [ -d "$1" ]; then
+        search_dir="$1"
+        # If there's a second argument, it's the pattern
+        if [ "$#" -gt 1 ]; then
+            pattern="$2"
+        fi
+    else
+        # First argument is the pattern
+        pattern="$1"
+    fi
+fi
+
+# Use fd to find files and fzf to select
+local selected_file=$(fd \
+    --type f \
+    --hidden \
+    --follow \
+    --exclude .git \
+    --no-ignore \
+    --color always \
+    "$pattern" \
+    "$search_dir" \
+    | fzf \
+        --ansi \
+        --preview 'bat --style=numbers --color=always {}' \
+        --preview-window 'right:60%' \
+        --bind 'ctrl-/:change-preview-window(down|hidden|)' \
+        --bind 'ctrl-y:execute-silent(echo -n {} | pbcopy)' \
+        --header 'CTRL-/ to toggle preview, CTRL-Y to copy path' \
+        --height '80%' \
+        --border \
+        --info inline \
+        --layout reverse 
+)
+
+if [ -n "$selected_file" ]; then
+    echo "Selected: $selected_file"
+    
+    # Check if nvr is available and nvim server is running
+    if command -v nvr >/dev/null 2>&1 && [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+        echo "using nvr"
+        nvr --remote-silent "$selected_file"
+    else
+        echo "using nvim"
+        nvim "$selected_file"
+    fi
+fi
