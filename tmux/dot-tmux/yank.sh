@@ -8,6 +8,11 @@ is_app_installed() {
 # get data either form stdin or from file
 buf=$(cat "$@")
 
+# Exit early if buffer is empty
+if [ -z "$buf" ]; then
+  exit 0
+fi
+
 copy_backend_remote_tunnel_port=$(tmux show-option -gvq "@copy_backend_remote_tunnel_port")
 copy_use_osc52_fallback=$(tmux show-option -gvq "@copy_use_osc52_fallback")
 
