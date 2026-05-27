@@ -19,6 +19,20 @@ return {
         name = "work",
         path = "~/Obsidian",
       },
+      -- catch-all for any markdown buffer NOT in a fixed vault
+      {
+        name = "no-vault",
+        path = function()
+          return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
+        end,
+        overrides = {
+          notes_subdir = vim.NIL,
+          new_notes_location = "current_dir",
+          templates = { folder = vim.NIL },
+          daily_notes = { folder = vim.NIL },
+          frontmatter = { enabled = false }, -- replaces disable_frontmatter = true
+        },
+      },
     },
     -- completion = {
     --   -- Set to false to disable completion.
