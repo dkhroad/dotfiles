@@ -1,0 +1,9 @@
+# Anthropic / Claude Code env vars live outside the repo so they can be
+# rotated without a commit. Populate ~/.config/anthropic/env with:
+#   export ANTHROPIC_API_KEY=...
+#   export ANTHROPIC_AUTH_TOKEN=...
+#   export ANTHROPIC_BASE_URL=...
+#   export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1
+_anthropic_env="${XDG_CONFIG_HOME:-$HOME/.config}/anthropic/env"
+[[ -r "$_anthropic_env" ]] && source "$_anthropic_env"
+unset _anthropic_env
