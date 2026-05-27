@@ -80,6 +80,7 @@ elif [[ "$(uname)" == "Darwin" ]]; then
     source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=gray'  
 autoload -Uz fif 
 autoload -Uz ff
 
