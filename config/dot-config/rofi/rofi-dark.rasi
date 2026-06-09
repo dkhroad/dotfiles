@@ -1,0 +1,3 @@
+/* Dark rofi theme. Absolute import so the theme's own relative
+   @import "gruvbox-common.rasi" resolves against /usr/share/rofi/themes. */
+@import "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"

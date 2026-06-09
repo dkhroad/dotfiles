@@ -19,3 +19,4 @@ config/dot-config/nvim/lazy-lock.json
 # Runtime theme-state symlinks flipped by i3/bin/theme-switch (light<->dark)
 config/dot-config/i3/theme.conf
 config/dot-config/alacritty/active.toml
+config/dot-config/rofi/active.rasi

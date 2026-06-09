@@ -1,0 +1,3 @@
+/* Light rofi theme (hard contrast for daytime). Absolute import so the
+   theme's own relative @import "gruvbox-common.rasi" resolves correctly. */
+@import "/usr/share/rofi/themes/gruvbox-light-hard.rasi"

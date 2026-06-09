@@ -42,5 +42,8 @@ touch "$alac/alacritty.toml"
 ln -sf "$i3t" "$i3dir/theme.conf"
 i3-msg reload >/dev/null 2>&1 || true
 
+# 4. rofi — swap the imported theme (read fresh by rofi on next launch)
+ln -sf "rofi-$mode.rasi" "$HOME/.config/rofi/active.rasi"
+
 echo "$mode" > "$state"
 command -v notify-send >/dev/null 2>&1 && notify-send -t 1500 "Theme → $mode" || true

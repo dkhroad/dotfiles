@@ -1,0 +1,8 @@
+/* active.rasi is a symlink swapped by i3/bin/theme-switch between
+   rofi-dark.rasi and rofi-light.rasi (gitignored runtime state). */
+@import "/home/dkhroad/.config/rofi/active.rasi"
+
+/* Override the theme's font size (declared after the import so it wins) */
+* {
+    font: "DejaVu Sans Mono 16";
+}
