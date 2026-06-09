@@ -36,7 +36,7 @@ set $mod mod1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 6 
+font pango:DejaVu Sans Mono 8 
 # Start XDG autostart .desktop files using dex. See also https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
@@ -65,15 +65,20 @@ exec --no-startup-id picom
 #exec xrandr --addmode HDMI-0 "4096x2160_59.94"
 #exec aandr --output HDMI-0 --mode "4096x2160_59.94"
 # exec --no-startup-id xrandr --dpi 144
-exec --no-startup-id xrandr --output HDMI-0 --scale 1x1 --dpi 192
+# exec --no-startup-id xrandr --output HDMI-0 --scale 1x1 --dpi 192
+# Set 6K mode, THEN paint the wallpaper. feh --bg-scale paints the root window at
+# whatever the screen size is when it runs; if it races ahead of this xrandr it
+# scales to the old (smaller) resolution and fills only the top-left quarter of
+# the 6K root. Chaining feh here guarantees it runs after the mode is set.
+exec --no-startup-id xrandr --output DP-0 --mode 6016x3384 --rate 60 --primary && feh --bg-scale /usr/share/backgrounds/ubuntu_by_arman1992.png
 
 # Optional: If you want to force certain apps to scale properly
-exec  --no-startup-id gsettings set org.gnome.desktop.interface scaling-factor 1
-exec --no-startup-id gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'Gdk/WindowScalingFactor', <1>}]"
+# exec  --no-startup-id gsettings set org.gnome.desktop.interface scaling-factor 1
+# exec --no-startup-id gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'Gdk/WindowScalingFactor', <1>}]"
 
 # Optional: Set environment variables for QT applications
-exec --no-startup-id export QT_AUTO_SCREEN_SCALE_FACTOR=1
-exec --no-startup-id export QT_SCALE_FACTOR=144
+# exec --no-startup-id export QT_AUTO_SCREEN_SCALE_FACTOR=1
+# exec --no-startup-id export QT_SCALE_FACTOR=144
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
