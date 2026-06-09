@@ -48,8 +48,10 @@ ln -sf "rofi-$mode.rasi" "$HOME/.config/rofi/active.rasi"
 # 5. Claude Code TUI — flip its theme ("light"/"dark") so markdown stays
 # readable. Edit the real file (settings.json is a symlink) and touch only the
 # theme value. Claude Code watches the file and applies it live.
+# Use the *-ansi themes so Claude Code draws from the terminal's gruvbox
+# palette (readable on the gruvbox bg) rather than its own hardcoded colors.
 claude_settings="$(readlink -f "$HOME/.claude/settings.json" 2>/dev/null || echo "$HOME/.claude/settings.json")"
-[ -f "$claude_settings" ] && sed -i 's/\("theme":[[:space:]]*\)"[a-z-]*"/\1"'"$mode"'"/' "$claude_settings"
+[ -f "$claude_settings" ] && sed -i 's/\("theme":[[:space:]]*\)"[a-z-]*"/\1"'"$mode"'-ansi"/' "$claude_settings"
 
 echo "$mode" > "$state"
 command -v notify-send >/dev/null 2>&1 && notify-send -t 1500 "Theme → $mode" || true
