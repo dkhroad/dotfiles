@@ -94,7 +94,10 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# custome bindsyms 
+# custome bindsyms
+
+# toggle light/dark theme across i3 + apps (gruvbox); see bin/theme-switch
+bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/bin/theme-switch toggle
 
 bindsym $mod+Shift+f exec ~/.config/i3/bin/rofifinder
 bindsym $mod+Shift+e exec ~/.config/i3/bin/logout
@@ -267,12 +270,10 @@ mode "$mode_launcher" {
     bindsym Return mode "default"
 }
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-        font pango:DejaVu Sans Mono 8 
-}
+# Window border + i3bar colors live in theme.conf — a symlink swapped between
+# theme-light.conf / theme-dark.conf by ~/.config/i3/bin/theme-switch ($mod+F5).
+# The bar{} block is defined inside those files so its colors switch too.
+include ~/.config/i3/theme.conf
 
 
 for_window [class="^.*"] border pixel 2

@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Unified light/dark theme switch for i3 + apps. Bound to $mod+F5 (toggle).
+#
+# The freedesktop "color-scheme" (prefer-light/prefer-dark) is the shared signal
+# that Chromium/Electron apps — Chrome, Cursor, Slack, Obsidian — read via the
+# running xdg-desktop-portal, so flipping it switches them with no per-app call.
+# i3 and alacritty don't read it, so we swap their theme files explicitly.
+#
+#   theme-switch [light|dark|toggle]   (default: toggle)
+set -uo pipefail
+
+state="${XDG_CACHE_HOME:-$HOME/.cache}/theme-mode"
+i3dir="$HOME/.config/i3"
+alac="$HOME/.config/alacritty"
+
+mode="${1:-toggle}"
+if [ "$mode" = toggle ]; then
+    cur="$(cat "$state" 2>/dev/null || echo dark)"
+    [ "$cur" = dark ] && mode=light || mode=dark
+fi
+
+case "$mode" in
+    light) scheme=prefer-light; gtk=Gruvbox-Light; theme=gruvbox_light_hard; i3t=theme-light.conf ;;
+    dark)  scheme=prefer-dark;  gtk=Gruvbox-Dark;  theme=gruvbox_dark;       i3t=theme-dark.conf ;;
+    *) echo "usage: theme-switch [light|dark|toggle]" >&2; exit 1 ;;
+esac
+
+# Fall back to Materia if the gruvbox GTK theme isn't installed yet.
+if [ ! -d "$HOME/.themes/$gtk" ] && [ ! -d "/usr/share/themes/$gtk" ]; then
+    [ "$mode" = light ] && gtk=Materia-light || gtk=Materia-dark
+fi
+
+# 1. Shared signal — Chrome / Cursor / Slack / Obsidian follow this via the portal
+gsettings set org.gnome.desktop.interface color-scheme "$scheme"
+gsettings set org.gnome.desktop.interface gtk-theme "$gtk"
+
+# 2. alacritty — swap the imported theme, then touch the config to force live reload
+ln -sf "themes/themes/$theme.toml" "$alac/active.toml"
+touch "$alac/alacritty.toml"
+
+# 3. i3 — swap border/bar colors and reload (seamless, windows survive)
+ln -sf "$i3t" "$i3dir/theme.conf"
+i3-msg reload >/dev/null 2>&1 || true
+
+echo "$mode" > "$state"
+command -v notify-send >/dev/null 2>&1 && notify-send -t 1500 "Theme → $mode" || true
