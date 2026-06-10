@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Chrome (Forced Dark)
+GenericName=Web Browser
+Comment=Chrome with web-contents force-dark inversion, for too-bright sites at night
+Exec=/usr/bin/google-chrome-stable --force-device-scale-factor=2 --force-dark-mode --enable-features=WebContentsForceDark:inversion_method/cielab_based/image_behavior/selective %U
+StartupNotify=true
+StartupWMClass=Google-chrome
+Terminal=false
+Icon=google-chrome
+Type=Application
+Categories=Network;WebBrowser;

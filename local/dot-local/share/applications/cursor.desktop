@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Cursor
+Comment=The AI Code Editor.
+GenericName=Text Editor
+Exec=/home/dkhroad/.local/bin/Cursor-1.2.2-x86_64.AppImage --force-device-scale-factor=1.5
+Icon=/home/dkhroad/.local/share/icons/hicolor/512x512/apps/cursor.png
+Type=Application
+StartupNotify=false
+StartupWMClass=Cursor
+Categories=TextEditor;Development;IDE;
+MimeType=application/x-cursor-workspace;
+Actions=new-empty-window;
+Keywords=cursor;
+
