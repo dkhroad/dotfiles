@@ -87,5 +87,7 @@ for tcfg in "$HOME"/.config/tilda/config_*; do
         "$tcfg"
 done
 
+# Record the mode. Running nvim instances watch this file (see nvim
+# lua/config/theme.lua) and flip their background live when it changes.
 echo "$mode" > "$state"
 command -v notify-send >/dev/null 2>&1 && notify-send -t 1500 "Theme → $mode" || true
