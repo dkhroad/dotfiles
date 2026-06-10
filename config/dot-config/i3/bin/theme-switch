@@ -55,9 +55,10 @@ claude_settings="$(readlink -f "$HOME/.claude/settings.json" 2>/dev/null || echo
 
 # 6. Tilda — flat GTK keyfile, no live reload (read at startup, rewritten on
 # exit). We set scheme/palette_scheme to Custom (0) and write explicit gruvbox
-# colors (16-bit, = 8-bit * 257) matching the alacritty theme. Applies on the
-# NEXT Tilda launch; a currently-running instance keeps its colors and will
-# overwrite its own config on quit — quit it before toggling to make it stick.
+# colors (16-bit, = 8-bit * 257) matching the alacritty theme. Because Tilda
+# rewrites its config on exit, a running instance would clobber these colors on
+# quit — so after writing we SIGKILL any running Tilda (kill -9 = no write-back)
+# and relaunch it themed.
 if [ "$mode" = light ]; then
     til_back="63993 62965 55255"   # bg #f9f5d7 (gruvbox light hard)
     til_text="15420 14392 13878"   # fg #3c3836
@@ -86,6 +87,14 @@ for tcfg in "$HOME"/.config/tilda/config_*; do
         -e "s|^palette[[:space:]]*=.*|palette = {$til_palette}|" \
         "$tcfg"
 done
+# Replace any running Tilda so it picks up the new colors (kill -9 first so it
+# can't write its old config back on the way out). Relaunches the default
+# instance (config_0) only.
+if pgrep -x tilda >/dev/null 2>&1; then
+    pkill -9 -x tilda
+    sleep 0.3
+    setsid tilda >/dev/null 2>&1 &
+fi
 
 # Record the mode. Running nvim instances watch this file (see nvim
 # lua/config/theme.lua) and flip their background live when it changes.
